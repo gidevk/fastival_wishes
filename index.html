@@ -118,11 +118,11 @@
   <script>
     function openPopup() {
       const name = document.getElementById("senderName").value.trim();
+            const url = encodeURIComponent('https://fastival-wishes.vercel.app/raksha-bandhan.png');
       const message = `💖 रक्षाबंधन की हार्दिक शुभकामनाएं! 💖
 इस पावन अवसर पर आपको ढेर सारा प्यार और मंगलकामनाएं।
 आपका - ${name}
-शुभकामनाएं भेजने के लिए यहाँ क्लिक करें: https://yourwebsite.com/rakhi-wishes`;
-      const url = encodeURIComponent('raksha-bandhan.png');
+शुभकामनाएं भेजने के लिए यहाँ क्लिक करें: https://fastival-wishes.vercel.app/`;
       const text = encodeURIComponent(message);
 
       document.getElementById("wishText").innerText = message;

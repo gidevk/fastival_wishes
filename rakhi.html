@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>रक्षाबंधन 2025 शुभकामनाएं</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ffe0e0, #ffdcdc);
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 20px;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #f06292;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #ec407a;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 100%;
+      max-width: 300px;
+    }
+    .popup a {
+      display: block;
+      margin: 10px 0;
+      color: #f06292;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      button {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav style="background-color:#f06292; padding: 10px 0; text-align: center;">
+    <a href="#" style="margin: 0 15px; color: white; text-decoration: none; font-weight: bold;">रक्षाबंधन</a>
+    <a href="#" style="margin: 0 15px; color: white; text-decoration: none; font-weight: bold;">दिवाली</a>
+    <a href="#" style="margin: 0 15px; color: white; text-decoration: none; font-weight: bold;">होली</a>
+    <a href="#" style="margin: 0 15px; color: white; text-decoration: none; font-weight: bold;">ईद</a>
+    <a href="#" style="margin: 0 15px; color: white; text-decoration: none; font-weight: bold;">क्रिसमस</a>
+  </nav>
+  <div class="container">
+    <h1>🌸 रक्षाबंधन 2025 की शुभकामनाएं 🌸</h1>
+    <img src="raksha-bandhan.png" alt="रक्षाबंधन 2025" id="rakhiImage">
+    <input type="text" id="senderName" placeholder="अपना नाम दर्ज करें">
+    <button onclick="openPopup()">शेयर करें</button>
+  </div>
+
+  <div class="popup" id="sharePopup">
+    <div class="popup-content">
+      <p id="wishText"></p>
+      <a href="#" target="_blank" id="whatsappLink">व्हाट्सएप पर शेयर करें</a>
+      <a href="#" target="_blank" id="facebookLink">फेसबुक पर शेयर करें</a>
+      <a href="https://t.me/share/url?url=" target="_blank">टेलीग्राम खोलें</a>
+      <button onclick="closePopup()">बंद करें</button>
+    </div>
+  </div>
+
+  <script>
+    function openPopup() {
+      const name = document.getElementById("senderName").value.trim();
+      const message = `💖 रक्षाबंधन की हार्दिक शुभकामनाएं! 💖
+इस पावन अवसर पर आपको ढेर सारा प्यार और मंगलकामनाएं।
+आपका - ${name}
+शुभकामनाएं भेजने के लिए यहाँ क्लिक करें: https://yourwebsite.com/rakhi-wishes`;
+      const url = encodeURIComponent('raksha-bandhan.png');
+      const text = encodeURIComponent(message);
+
+      document.getElementById("wishText").innerText = message;
+      document.getElementById("whatsappLink").href = `https://api.whatsapp.com/send?text=${text}%20${url}`;
+      document.getElementById("facebookLink").href = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`;
+      document.getElementById("sharePopup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("sharePopup").style.display = "none";
+    }
+  </script>
+</body>
+</html>

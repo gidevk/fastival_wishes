@@ -8,7 +8,7 @@
 	};
 </script>
 <script type="text/javascript" src="//equatorspitefulbilliards.com/6726b64069ce15faa96175dfa0681752/invoke.js"></script>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
@@ -21,53 +21,25 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      background: #ffebee;
+      background: linear-gradient(135deg, #ffe0e0, #ffdcdc);
       padding: 20px;
       margin: 0;
-      position: relative;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: 
-        radial-gradient(circle at 20% 30%, rgba(255, 105, 180, 0.1) 0%, transparent 20%),
-        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.1) 0%, transparent 20%),
-        radial-gradient(circle at 40% 80%, rgba(255, 192, 203, 0.1) 0%, transparent 20%);
-      z-index: -1;
     }
     .container {
       width: 100%;
       max-width: 400px;
       margin: auto;
-      background: rgba(255, 255, 255, 0.9);
+      background: #fff;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       padding: 20px;
       margin-bottom: 20px;
-      position: relative;
-      overflow: hidden;
-    }
-    .container::after {
-      content: "🌸";
-      position: absolute;
-      font-size: 100px;
-      opacity: 0.1;
-      right: -20px;
-      top: -20px;
-      z-index: 0;
     }
     img {
       width: 100%;
       height: auto;
       border-radius: 10px;
       margin-bottom: 10px;
-      position: relative;
-      z-index: 1;
     }
     .image-options {
       display: flex;
@@ -83,14 +55,9 @@
       border: 2px solid transparent;
       cursor: pointer;
       object-fit: cover;
-      transition: all 0.3s ease;
-    }
-    .image-option:hover {
-      transform: scale(1.05);
     }
     .image-option.selected {
       border-color: #f06292;
-      box-shadow: 0 0 10px rgba(240, 98, 146, 0.5);
     }
     input[type="text"] {
       width: 100%;
@@ -99,7 +66,6 @@
       font-size: 16px;
       border-radius: 5px;
       border: 1px solid #ccc;
-      background: rgba(255, 255, 255, 0.8);
     }
     button {
       margin-top: 20px;
@@ -111,28 +77,9 @@
       border-radius: 8px;
       cursor: pointer;
       width: 100%;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
     }
     button:hover {
       background-color: #ec407a;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    button::after {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -60%;
-      width: 200%;
-      height: 200%;
-      background: rgba(255,255,255,0.2);
-      transform: rotate(30deg);
-      transition: all 0.3s ease;
-    }
-    button:hover::after {
-      left: 100%;
     }
     .popup {
       display: none;
@@ -154,17 +101,6 @@
       text-align: center;
       width: 100%;
       max-width: 300px;
-      position: relative;
-      overflow: hidden;
-    }
-    .popup-content::before {
-      content: "💖";
-      position: absolute;
-      font-size: 80px;
-      opacity: 0.1;
-      right: -10px;
-      top: -10px;
-      z-index: 0;
     }
     .popup a {
       display: block;
@@ -172,13 +108,6 @@
       color: #f06292;
       text-decoration: none;
       font-weight: bold;
-      position: relative;
-      z-index: 1;
-      transition: all 0.3s ease;
-    }
-    .popup a:hover {
-      color: #ec407a;
-      transform: translateX(5px);
     }
     .wish-card {
       background: #fff9f9;
@@ -186,14 +115,24 @@
       padding: 15px;
       margin: 15px 0;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      position: relative;
-      z-index: 1;
-      border: 1px solid #ffcdd2;
     }
     .wish-card img {
       border: 2px solid #f06292;
     }
-    .share-message {
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      button {
+        font-size: 14px;
+        padding: 10px;
+      }
+      .share-message {
+        font-size: 12px;
+        padding: 10px;
+      }
+    }
+ .share-message {
       font-size: 14px;
       color: #5a3d2b;
       margin: 15px 0;
@@ -228,32 +167,20 @@
       border-radius: 50%;
       opacity: 0.3;
     }
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.5rem;
-      }
-      button {
-        font-size: 14px;
-        padding: 10px;
-      }
-      .share-message {
-        font-size: 13px;
-        padding: 10px;
-      }
-    }
+
   </style>
 </head>
 <body>
-  <nav style="background-color:#f06292; padding: 10px 0; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+  <nav style="background-color:#f06292; padding: 10px 0; text-align: center;">
     <a href="#" style="margin: 0 15px; color: white; text-decoration: none; font-weight: bold;">रक्षाबंधन</a>
     <a href="#" style="margin: 0 15px; color: white; text-decoration: none; font-weight: bold;">दिवाली</a>
     <a href="#" style="margin: 0 15px; color: white; text-decoration: none; font-weight: bold;">होली</a>
     <a href="#" style="margin: 0 15px; color: white; text-decoration: none; font-weight: bold;">ईद</a>
     <a href="#" style="margin: 0 15px; color: white; text-decoration: none; font-weight: bold;">क्रिसमस</a>
   </nav>
-
+  <script type='text/javascript' src='//equatorspitefulbilliards.com/cb/42/f7/cb42f725ea60c82447551cc6338444e4.js'></script>
   <div class="container">
-    <h1>🌸 रक्षाबंधन 2025 की शुभकामनाएं 🌸</h1>
+<h1>🌸 रक्षाबंधन 2025 की शुभकामनाएं 🌸</h1>
     
     <!-- Main image display -->
     <img src="rakhi1.jpg" alt="रक्षाबंधन 2025" id="rakhiImage">
@@ -266,11 +193,9 @@
       <img src="rakhi4.jpg" class="image-option" onclick="changeImage(this, 'rakhi4.jpg')">
       <img src="rakhi5.jpg" class="image-option" onclick="changeImage(this, 'rakhi5.jpg')">
     </div>
-    
-    <div class="share-message">
-      एक छोटी-सी, प्यारी शुभकामना साझा करें और अपने बहनों को यह महसूस कराएँ कि आप उन्हें दिल से चाहते हैं और हमेशा उनकी परवाह करते हैं!
-    </div>
-    
+     <div class="share-message">
+  एक छोटी-सी, प्यारी शुभकामना साझा करें और अपने बहनों को यह महसूस कराएँ कि आप उन्हें दिल से चाहते हैं और हमेशा उनकी परवाह करते हैं!      
+     </div>
     <input type="text" id="senderName" placeholder="अपना नाम दर्ज करें">
     <button onclick="openPopup()">whatsApp शेयर करें</button>
   </div>
@@ -280,9 +205,6 @@
       <div class="wish-card">
         <img src="rakhi1.jpg" id="shareImage" alt="रक्षाबंधन शुभकामनाएं">
         <p id="wishText"></p>
-      </div>
-      <div class="share-message">
-        इन छोटी, प्यारी शुभकामनाओं को साझा करें और उन्हें बताएं कि आप उनकी परवाह करते हैं!
       </div>
       <a href="#" target="_blank" id="whatsappLink">व्हाट्सएप पर शेयर करें</a>
       <a href="#" target="_blank" id="facebookLink">फेसबुक पर शेयर करें</a>
@@ -297,8 +219,11 @@
     const websiteUrl = 'https://fastival-wishes.vercel.app/';
     
     function changeImage(element, imageUrl) {
+      // Update selected image
       document.getElementById('rakhiImage').src = imageUrl;
       selectedImageUrl = imageUrl;
+      
+      // Update selected state
       document.querySelectorAll('.image-option').forEach(img => {
         img.classList.remove('selected');
       });
@@ -309,86 +234,70 @@
       const name = document.getElementById("senderName").value.trim() || "भैया";
       
       const wishes = [
-        `💖 रक्षाबंधन की हार्दिक शुभकामनाएं, प्यारी बहना! यह त्योहार तुम्हारे जीवन में ढेरों खुशियाँ और सफलता लाए,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: ${websiteUrl}`,
-        `🌸 प्यारी बहना, रक्षाबंधन की शुभकामनाएं! भगवान तुम्हारे हर सपने को पूरा करे,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: ${websiteUrl}`,
-        `💝 हैप्पी रक्षाबंधन! बहना, तुम मेरी दुनिया हो और इस रिश्ते की मिठास हमेशा बनी रहे,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: ${websiteUrl}`,
-        `✨ रक्षाबंधन मुबारक हो! तुम्हारी हंसी मेरे दिल की धड़कन है,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: ${websiteUrl}`,
-        `🎀 प्यारी बहना, राखी के इस पावन अवसर पर मैं तुम्हारे लिए ढेरों दुआएँ करता हूँ,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: ${websiteUrl}`,
-        `💖 रक्षाबंधन की बधाई! तुम मेरे बचपन की सबसे प्यारी याद हो,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: ${websiteUrl}`,
-        `🌺 Happy Raksha Bandhan, Dear Sister! तुम्हारे बिना मेरी जिंदगी अधूरी है,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: ${websiteUrl}`,
-        `🎉 रक्षाबंधन की हार्दिक शुभकामनाएं! तुम मेरी सबसे अच्छी दोस्त और साथी हो,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: ${websiteUrl}`,
-        `🌟 राखी के इस पर्व पर मैं वादा करता हूँ कि हमेशा तुम्हारे साथ रहूँगा,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: ${websiteUrl}`,
-        `💐 रक्षाबंधन की ढेरों बधाइयाँ! बहना, तुम्हारी मुस्कान मेरी सबसे बड़ी दौलत है।\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: ${websiteUrl}`
+        `💖 रक्षाबंधन की हार्दिक शुभकामनाएं, प्यारी बहना! यह त्योहार तुम्हारे जीवन में ढेरों खुशियाँ और सफलता लाए,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `,
+        
+        `🌸 प्यारी बहना, रक्षाबंधन की शुभकामनाएं! भगवान तुम्हारे हर सपने को पूरा करे,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `,
+        
+        `💝 हैप्पी रक्षाबंधन! बहना, तुम मेरी दुनिया हो और इस रिश्ते की मिठास हमेशा बनी रहे,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `,
+        
+        `✨ रक्षाबंधन मुबारक हो! तुम्हारी हंसी मेरे दिल की धड़कन है,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `,
+        
+        `🎀 प्यारी बहना, राखी के इस पावन अवसर पर मैं तुम्हारे लिए ढेरों दुआएँ करता हूँ,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `,
+        
+        `💖 रक्षाबंधन की बधाई! तुम मेरे बचपन की सबसे प्यारी याद हो,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `,
+        
+        `🌺 Happy Raksha Bandhan, Dear Sister! तुम्हारे बिना मेरी जिंदगी अधूरी है,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `,
+        
+        `🎉 रक्षाबंधन की हार्दिक शुभकामनाएं! तुम मेरी सबसे अच्छी दोस्त और साथी हो,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `,
+        
+        `🌟 राखी के इस पर्व पर मैं वादा करता हूँ कि हमेशा तुम्हारे साथ रहूँगा,\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `,
+        
+        `💐 रक्षाबंधन की ढेरों बधाइयाँ! बहना, तुम्हारी मुस्कान मेरी सबसे बड़ी दौलत है।\n\nआपका ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `
       ];
       
       const randomIndex = Math.floor(Math.random() * wishes.length);
       const message = wishes[randomIndex];
+      const text = encodeURIComponent(message);
       
-      // Create a canvas to combine image and text
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const img = new Image();
-      img.crossOrigin = 'Anonymous';
-      img.src = selectedImageUrl;
+      // Update share image
+      document.getElementById("shareImage").src = selectedImageUrl;
+      document.getElementById("wishText").innerText = message;
       
-      img.onload = function() {
-        canvas.width = img.width;
-        canvas.height = img.height + 150; // Extra space for text
-        
-        // Draw image
-        ctx.drawImage(img, 0, 0, img.width, img.height);
-        
-        // Add text background
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-        ctx.fillRect(0, img.height, img.width, 150);
-        
-        // Add text
-        ctx.fillStyle = '#5a3d2b';
-        ctx.font = '18px Arial';
-        const lines = message.split('\n');
-        let y = img.height + 30;
-        
-        lines.forEach(line => {
-          ctx.fillText(line, 20, y);
-          y += 25;
-        });
-        
-        // Convert canvas to image URL
-        const combinedImageUrl = canvas.toDataURL('image/jpeg');
-        
-        // Update share image preview
-        document.getElementById("shareImage").src = combinedImageUrl;
-        document.getElementById("wishText").innerText = message;
-        
-        // Update share links with the combined image
-        const text = encodeURIComponent(message);
-        const whatsappText = encodeURIComponent(`${message}\n${websiteUrl}`);
-        
-        document.getElementById("whatsappLink").href = `https://api.whatsapp.com/send?text=${whatsappText}`;
-        document.getElementById("facebookLink").href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(combinedImageUrl)}&quote=${text}`;
-        document.getElementById("telegramLink").href = `https://t.me/share/url?url=${encodeURIComponent(combinedImageUrl)}&text=${text}`;
-        document.getElementById("downloadLink").href = combinedImageUrl;
-        document.getElementById("downloadLink").download = `raksha-bandhan-wish-${name}.jpg`;
-        
-        // Try native share API first
-        if (navigator.share) {
-          navigator.share({
-            title: 'रक्षाबंधन 2025 शुभकामनाएं',
-            text: message,
-            url: websiteUrl,
-            files: [new File([combinedImageUrl], 'raksha-bandhan.jpg', { type: 'image/jpeg' })]
-          }).catch(err => {
-            console.log('Error sharing:', err);
-            document.getElementById("sharePopup").style.display = "flex";
-          });
-        } else {
+      // Update share links
+      document.getElementById("whatsappLink").href = `https://api.whatsapp.com/send?text=${text}`;
+      document.getElementById("facebookLink").href = `https://www.facebook.com/sharer/sharer.php?u=${websiteUrl}&quote=${text}`;
+      document.getElementById("telegramLink").href = `https://t.me/share/url?url=${websiteUrl}&text=${text}`;
+      document.getElementById("downloadLink").href = selectedImageUrl;
+      document.getElementById("downloadLink").download = `raksha-bandhan-wish-${name}.jpg`;
+      
+      // Try native share API first
+      if (navigator.share) {
+        navigator.share({
+          title: 'रक्षाबंधन 2025 शुभकामनाएं',
+          text: message,
+          url: websiteUrl
+        }).catch(err => {
+          console.log('Error sharing:', err);
           document.getElementById("sharePopup").style.display = "flex";
-        }
-      };
+        });
+      } else {
+        document.getElementById("sharePopup").style.display = "flex";
+      }
     }
 
     function closePopup() {
       document.getElementById("sharePopup").style.display = "none";
+    }
+    
+    // Function to download image with text
+    function downloadWithText() {
+      const link = document.createElement('a');
+      link.href = selectedImageUrl;
+      const name = document.getElementById("senderName").value.trim() || "raksha-bandhan";
+      link.download = `raksha-bandhan-wish-${name}.jpg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
   </script>
 </body>

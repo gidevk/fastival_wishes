@@ -14,7 +14,6 @@
       background: #ffebee;
       padding: 20px;
       margin: 0;
-      position: relative;
     }
     .container {
       width: 100%;
@@ -24,13 +23,12 @@
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       padding: 20px;
-      margin-bottom: 20px;
     }
     img {
       width: 100%;
       height: auto;
       border-radius: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
     .image-options {
       display: flex;
@@ -52,14 +50,14 @@
     }
     input[type="text"] {
       width: 100%;
-      padding: 10px;
-      margin-top: 15px;
+      padding: 12px;
+      margin: 15px 0;
       font-size: 16px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      border-radius: 8px;
+      border: 1px solid #ddd;
     }
     button {
-      margin-top: 20px;
+      margin-top: 10px;
       padding: 12px 20px;
       font-size: 16px;
       background-color: #f06292;
@@ -102,7 +100,6 @@
 
   <script>
     let selectedImageUrl = 'rakhi1.jpg';
-    const websiteUrl = 'https://fastival-wishes.vercel.app/';
     
     function changeImage(element, imageUrl) {
       document.getElementById('rakhiImage').src = imageUrl;
@@ -125,20 +122,68 @@
       ];
       
       const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
-      const fullMessage = `${randomWish}\n\n${websiteUrl}`;
       
-      // Create temporary link to share both image and text
-      const link = document.createElement('a');
-      link.href = `https://wa.me/?text=${encodeURIComponent(fullMessage)}`;
-      link.target = '_blank';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      // Create a canvas to combine image and text
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.src = selectedImageUrl;
       
-      // For better mobile experience
-      if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-        window.open(`whatsapp://send?text=${encodeURIComponent(fullMessage)}`, '_blank');
-      }
+      img.onload = function() {
+        // Set canvas dimensions
+        canvas.width = img.width;
+        canvas.height = img.height + 100; // Extra space for text
+        
+        // Draw image
+        ctx.drawImage(img, 0, 0, img.width, img.height);
+        
+        // Add text background
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+        ctx.fillRect(0, img.height, img.width, 100);
+        
+        // Add text
+        ctx.fillStyle = '#d81b60';
+        ctx.font = 'bold 18px Arial';
+        const lines = randomWish.split('\n');
+        
+        // Draw each line of text
+        lines.forEach((line, index) => {
+          ctx.fillText(line, 20, img.height + 30 + (index * 25));
+        });
+        
+        // Convert canvas to image
+        canvas.toBlob(function(blob) {
+          // Create download link
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = 'raksha-bandhan-wish.jpg';
+          
+          // Create WhatsApp share link with the image
+          if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+            // For mobile devices
+            const file = new File([blob], 'raksha-bandhan.jpg', { type: 'image/jpeg' });
+            const shareData = {
+              title: 'रक्षाबंधन शुभकामनाएं',
+              text: randomWish,
+              files: [file]
+            };
+            
+            if (navigator.canShare && navigator.canShare(shareData)) {
+              navigator.share(shareData);
+            } else {
+              window.open(`whatsapp://send?text=${encodeURIComponent(randomWish)}`);
+            }
+          } else {
+            // For desktop
+            window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(randomWish)}`);
+          }
+          
+          // Clean up
+          URL.revokeObjectURL(url);
+        }, 'image/jpeg', 0.9);
+      };
     }
   </script>
 </body>

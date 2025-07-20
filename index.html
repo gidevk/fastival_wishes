@@ -13,11 +13,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:image" content="https://fastival-wishes.vercel.app/rakhi1.jpg" />
+  <!-- <meta property="og:image" content="https://fastival-wishes.vercel.app/rakhi1.jpg" /> -->
   <meta property="og:title" content="रक्षाबंधन 2025 की शुभकामनाएं" />
   <meta property="og:description" content="प्यारी बहना को भेजें खास Rakhi शुभकामनाएं!" />
 
   <title>रक्षाबंधन 2025 शुभकामनाएं</title>
+
+  <!-- <meta property="og:title" content="रक्षाबंधन 2025 शुभकामनाएं"> -->
+  <!-- <meta property="og:description" content="अपने प्रियजनों को रक्षाबंधन की शुभकामनाएं भेजें"> -->
+  <meta property="og:url" content="https://fastival-wishes.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" id="ogImageMeta" content="">
+
   <style>
     * {
       box-sizing: border-box;
@@ -218,6 +225,43 @@
   }
 }
   </style>
+  
+  <script>
+    // Function to update meta tag from image element
+    function updateMetaImageFromElement() {
+      const rakhiImage = document.getElementById('rakhiImage');
+      const ogImageMeta = document.getElementById('ogImageMeta');
+      
+      // Convert to absolute URL if using relative paths
+      const imageUrl = new URL(rakhiImage.src, window.location.href).href;
+      
+      ogImageMeta.content = imageUrl;
+      
+      // Optional: Force social platforms to refresh cache
+      if (window.FB) FB.XFBML.parse();
+      if (window.twttr) twttr.widgets.load();
+    }
+
+    // Modified changeImage function
+    function changeImage(element, imageUrl) {
+      const rakhiImage = document.getElementById('rakhiImage');
+      rakhiImage.src = imageUrl;
+      
+      // Update selected state
+      document.querySelectorAll('.image-option').forEach(img => {
+        img.classList.remove('selected');
+      });
+      element.classList.add('selected');
+      
+      // Update the meta tag
+      updateMetaImageFromElement();
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateMetaImageFromElement();
+    });
+  </script>
 </head>
 <body>
   <nav style="background-color:#f06292; padding: 10px 0; text-align: center;">

@@ -296,9 +296,9 @@
         angle: r(90, 90 + direction * 30),
         spread: r(45, 80),
         origin: {
-          x: evt.clientX / window.innerWidth,
-          y: evt.clientY / window.innerHeight
-        },
+          x: (evt.clientX / window.innerWidth) > 0.5 ? 0.5 : (evt.clientX / window.innerWidth),
+      y: (evt.clientY / window.innerHeight) > 0.3 ? 0.3 : (evt.clientY / window.innerHeight)
+          },
         colors: ['#FF9933', '#FFFFFF', '#138808'] // Tricolor theme
       });
     }
@@ -380,7 +380,7 @@
       confetti({
         particleCount: 150,
         spread: 70,
-        origin: { y: 0.6 },
+        origin: { y: 0.2 },
         colors: ['#FF9933', '#FFFFFF', '#138808']
       });
     }

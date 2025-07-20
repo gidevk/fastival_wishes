@@ -25,15 +25,26 @@
       padding: 20px;
       margin: 0;
     }
-    .container {
+   .container {
       width: 100%;
       max-width: 400px;
       margin: auto;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       padding: 20px;
       margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .container::after {
+      content: "🌸";
+      position: absolute;
+      font-size: 100px;
+      opacity: 0.1;
+      right: -20px;
+      top: -20px;
+      z-index: 0;
     }
     img {
       width: 100%;
@@ -67,7 +78,7 @@
       border-radius: 5px;
       border: 1px solid #ccc;
     }
-    button {
+   button {
       margin-top: 20px;
       padding: 12px 20px;
       font-size: 16px;
@@ -77,9 +88,28 @@
       border-radius: 8px;
       cursor: pointer;
       width: 100%;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
     button:hover {
       background-color: #ec407a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    button::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255,255,255,0.2);
+      transform: rotate(30deg);
+      transition: all 0.3s ease;
+    }
+    button:hover::after {
+      left: 100%;
     }
     .popup {
       display: none;

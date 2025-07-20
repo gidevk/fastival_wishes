@@ -74,6 +74,20 @@
       margin: 15px 0;
       font-size: 14px;
     }
+    #loading {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+    }
   </style>
 </head>
 <body>
@@ -98,6 +112,8 @@
     <button onclick="shareOnWhatsApp()">WhatsApp पर शेयर करें</button>
   </div>
 
+  <div id="loading">तैयार हो रहा है... कृपया प्रतीक्षा करें</div>
+
   <script>
     let selectedImageUrl = 'rakhi1.jpg';
     const websiteUrl = 'https://fastival-wishes.vercel.app/';
@@ -113,6 +129,7 @@
     
     function shareOnWhatsApp() {
       const name = document.getElementById("senderName").value.trim() || "भैया";
+      const loading = document.getElementById('loading');
       
       const wishes = [
         `💖 रक्षाबंधन की हार्दिक शुभकामनाएं!\nआपका ${name}`,
@@ -125,40 +142,100 @@
       const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
       const fullMessage = `${randomWish}\n\nअधिक शुभकामनाएं भेजने के लिए यहाँ जाएं: ${websiteUrl}`;
       
-      // Create a temporary link for the image
-      const imgLink = document.createElement('a');
-      imgLink.href = selectedImageUrl;
-      imgLink.download = 'raksha-bandhan-wish.jpg';
+      loading.style.display = 'flex';
       
-      // For mobile devices
-      if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-        // Try to share both image and text using Web Share API
-        if (navigator.share) {
-          fetch(selectedImageUrl)
-            .then(response => response.blob())
-            .then(blob => {
+      // Create a canvas to combine image and text
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.src = selectedImageUrl;
+      
+      img.onload = function() {
+        canvas.width = img.width;
+        canvas.height = img.height + 100; // Extra space for text
+        
+        // Draw image
+        ctx.drawImage(img, 0, 0, img.width, img.height);
+        
+        // Add text background
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+        ctx.fillRect(0, img.height, img.width, 100);
+        
+        // Add text
+        ctx.fillStyle = '#d81b60';
+        ctx.font = 'bold 18px Arial';
+        const lines = randomWish.split('\n');
+        
+        // Draw each line of text
+        lines.forEach((line, index) => {
+          ctx.fillText(line, 20, img.height + 30 + (index * 25));
+        });
+        
+        // Convert canvas to blob
+        canvas.toBlob(function(blob) {
+          const imageUrl = URL.createObjectURL(blob);
+          
+          // For mobile devices
+          if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+            if (navigator.share) {
+              // Use Web Share API if available
               const file = new File([blob], 'raksha-bandhan.jpg', { type: 'image/jpeg' });
               navigator.share({
                 title: 'रक्षाबंधन शुभकामनाएं',
                 text: fullMessage,
                 files: [file]
-              }).catch(() => {
-                // Fallback to WhatsApp link if sharing fails
-                window.open(`whatsapp://send?text=${encodeURIComponent(fullMessage)}`);
+              }).catch(err => {
+                console.error('Share failed:', err);
+                // Fallback to WhatsApp with text only
+                window.location.href = `whatsapp://send?text=${encodeURIComponent(fullMessage)}`;
+              }).finally(() => {
+                loading.style.display = 'none';
               });
-            })
-            .catch(() => {
-              // If image fetch fails, just share text
-              window.open(`whatsapp://send?text=${encodeURIComponent(fullMessage)}`);
-            });
+            } else {
+              // Fallback for mobile browsers without Web Share API
+              // First download the image
+              const downloadLink = document.createElement('a');
+              downloadLink.href = imageUrl;
+              downloadLink.download = 'raksha-bandhan-wish.jpg';
+              document.body.appendChild(downloadLink);
+              downloadLink.click();
+              document.body.removeChild(downloadLink);
+              
+              // Then open WhatsApp with the text
+              setTimeout(() => {
+                window.location.href = `whatsapp://send?text=${encodeURIComponent(fullMessage)}`;
+                loading.style.display = 'none';
+              }, 1000);
+            }
+          } else {
+            // For desktop - download image and open WhatsApp web
+            const downloadLink = document.createElement('a');
+            downloadLink.href = imageUrl;
+            downloadLink.download = 'raksha-bandhan-wish.jpg';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            
+            // Open WhatsApp web
+            window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(fullMessage)}`);
+            loading.style.display = 'none';
+          }
+          
+          // Clean up
+          setTimeout(() => URL.revokeObjectURL(imageUrl), 1000);
+        }, 'image/jpeg', 0.9);
+      };
+      
+      img.onerror = function() {
+        // If image fails to load, just share text
+        loading.style.display = 'none';
+        if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+          window.location.href = `whatsapp://send?text=${encodeURIComponent(fullMessage)}`;
         } else {
-          // Fallback for mobile browsers without Web Share API
-          window.open(`whatsapp://send?text=${encodeURIComponent(fullMessage)}`);
+          window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(fullMessage)}`);
         }
-      } else {
-        // For desktop - we can only share text
-        window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(fullMessage)}`);
-      }
+      };
     }
   </script>
 </body>

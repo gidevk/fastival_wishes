@@ -166,7 +166,7 @@
         padding: 10px;
       }
     }
- .share-message {
+    .share-message {
       font-size: 14px;
       color: #5a3d2b;
       margin: 15px 0;
@@ -201,7 +201,22 @@
       border-radius: 50%;
       opacity: 0.3;
     }
+.glow {
+  font-size: 32px;
+  color: black;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
 
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #ec12cf, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 90px #e60073;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 100px #ff4da6;
+  }
+}
   </style>
 </head>
 <body>
@@ -214,7 +229,7 @@
   </nav>
   <script type='text/javascript' src='//equatorspitefulbilliards.com/cb/42/f7/cb42f725ea60c82447551cc6338444e4.js'></script>
   <div class="container">
-<h1>🌸 रक्षाबंधन 2025 की शुभकामनाएं 🌸</h1>
+<h1 class="glow">🌸 रक्षाबंधन 2025 की शुभकामनाएं 🌸</h1>
     
     <!-- Main image display -->
     <img src="rakhi1.jpg" alt="रक्षाबंधन 2025" id="rakhiImage">

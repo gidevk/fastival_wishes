@@ -14,14 +14,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- <meta property="og:image" content="https://fastival-wishes.vercel.app/independence1.jpg" /> -->
+<meta property="og:image" content="https://fastival-wishes.vercel.app/independence1.jpg" />
   <meta property="og:title" content=" स्वतंत्रता दिवस 2025 की हार्दिक शुभकामनाएं " />
   <meta property="og:description" content="स्वतंत्रता दिवस 2025 की हार्दिक शुभकामनाएं " />
 
   <title>स्वतंत्रता दिवस 2025 की हार्दिक शुभकामनाएं </title>
 
-  <meta property="og:url" content="https://fastival-wishes.vercel.app/">
+  <meta property="og:url" content="https://fastival-wishes.vercel.app//15_Aug/independence_day1.html">
   <meta property="og:type" content="website">
-  <meta property="og:image" id="ogImageMeta" content="">
+  <!-- <meta property="og:image" id="ogImageMeta" content=""> -->
 
   <style>
     * {
@@ -255,20 +256,53 @@ background-size: cover;
     }
 
     // Modified changeImage function
-    function changeImage(element, imageUrl) {
-      const independenceImage = document.getElementById('independenceImage');
-      independenceImage.src = imageUrl;
+    // function changeImage(element, imageUrl) {
+    //   const independenceImage = document.getElementById('independenceImage');
+    //   independenceImage.src = imageUrl;
       
-      // Update selected state
-      document.querySelectorAll('.image-option').forEach(img => {
-        img.classList.remove('selected');
-      });
-      element.classList.add('selected');
+    //   // Update selected state
+    //   document.querySelectorAll('.image-option').forEach(img => {
+    //     img.classList.remove('selected');
+    //   });
+    //   element.classList.add('selected');
       
-      // Update the meta tag
-      updateMetaImageFromElement();
-    }
+    //   // Update the meta tag
+    //   updateMetaImageFromElement();
+    // }
 
+  function changeImage(clickedElement, newImageSrc) {
+  // Change the main image
+  const mainImage = document.getElementById('independenceImage');
+  mainImage.src = newImageSrc;
+  
+  // Update the selected thumbnail style
+  document.querySelectorAll('.image-option').forEach(img => {
+    img.classList.remove('selected');
+  });
+  clickedElement.classList.add('selected');
+  
+  // Update the og:image meta tag dynamically
+  updateMetaImage(newImageSrc);
+}
+
+function updateMetaImage(imageUrl) {
+  // Find or create the og:image meta tag
+  let metaImage = document.querySelector('meta[property="og:image"]');
+  
+  if (!metaImage) {
+    metaImage = document.createElement('meta');
+    metaImage.setAttribute('property', 'og:image');
+    document.head.appendChild(metaImage);
+  }
+  
+  // Update the content (use absolute URL if needed)
+  const absoluteUrl = new URL(imageUrl, window.location.href).href;
+  metaImage.content = absoluteUrl;
+  
+  // Optional: Notify social platforms of the change (for link sharing)
+  if (window.FB) FB.XFBML.parse(); // For Facebook
+  if (window.twttr) twttr.widgets.load(); // For Twitter
+}
     // Initialize on page load
     document.addEventListener('DOMContentLoaded', function() {
       updateMetaImageFromElement();

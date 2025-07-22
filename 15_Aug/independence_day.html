@@ -243,7 +243,194 @@
     <a href="#" style="margin: 0 15px; color: white; text-decoration: none; font-weight: bold;">ईद</a>
     <a href="https://fastival-wishes.vercel.app/15_Aug/independence_day.html" style="margin: 0 15px; color: white; text-decoration: none; font-weight: bold;">स्वतंत्रता दिवस</a>
   </nav>
-    <h1 class="glow">स्वतंत्रता दिवस 2025 की हार्दिक शुभकामनाएं</h1>
+  <!-- contdown timer start -->
+<style>
+  /* Combined Countdown Styles */
+  .countdown-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: auto;
+    margin-top: 0;
+    animation: floating 3s ease-in-out infinite;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+  }
+
+  /* Floating animation */
+  @keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .countdown-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+  }
+  
+  .countdown-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: rgba(8, 246, 0, 0.6);
+    box-shadow: 0 0 20px rgba(2, 31, 221, 0.3),
+                inset 0 0 10px rgba(251, 0, 0, 0.2);
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+    border-radius: 5px;
+  }
+  
+  .countdown-box:hover {
+    transform: translateY(-5px) scale(1.05);
+  }
+  
+  .digit {
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 5px var(--neon-gold),
+                0 0 10px var(--neon-gold);
+    position: relative;
+    line-height: 1;
+  }
+  
+  .digit-label {
+    font-family: 'VT323', monospace;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 3px;
+    letter-spacing: 1px;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .countdown-container {
+      top: 10px;
+      right: 10px;
+      padding: 5px;
+    }
+    .countdown-box {
+      width: 40px;
+      height: 40px;
+      padding: 5px;
+    }
+    .digit {
+      font-size: 12px;
+    }
+    .digit-label {
+      font-size: 8px;
+    }
+  }
+
+  /* Fix for very small screens */
+  @media (max-width: 400px) {
+    .countdown-wrapper {
+      gap: 5px;
+    }
+    .countdown-box {
+      width: 35px;
+      height: 35px;
+    }
+  }
+</style>
+<div class="countdown-container">
+      <div class="countdown-wrapper">
+        <div class="countdown-box">
+          <div id="days" class="digit">00</div>
+          <div class="digit-label">Days</div>
+        </div>
+        <div class="countdown-box">
+          <div id="hours" class="digit">00</div>
+          <div class="digit-label">Hours</div>
+        </div>
+        <div class="countdown-box">
+          <div id="minutes" class="digit">00</div>
+          <div class="digit-label">Minutes</div>
+        </div>
+        <div class="countdown-box">
+          <div id="seconds" class="digit">00</div>
+          <div class="digit-label">Seconds</div>
+        </div>
+      </div>
+    </div>
+<script>
+    // Set स्वतंत्रता दिवस  date (August 15, 2025)
+    const rakhiDate = new Date(2025, 7, 15, 0, 0, 0);
+    
+    function updateCountdown() {
+      const now = new Date();
+      const diff = rakhiDate - now;
+      
+      // Check if स्वतंत्रता दिवस  has passed
+      if (diff <= 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        // document.querySelector('.countdown-title').textContent = 'RAKSHA BANDHAN IS HERE!';
+        document.querySelector('.hindi-text').textContent = 'स्वतंत्रता दिवस आ गया है!';
+        return;
+      }
+      
+      // Calculate remaining time
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      // Update the display with padded zeros
+      document.getElementById('days').textContent = days.toString().padStart(2, '0');
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+      
+      // Add special effects for last hour
+      if (days === 0 && hours === 0) {
+        document.querySelectorAll('.digit').forEach(digit => {
+          digit.style.color = 'var(--neon-red)';
+          digit.style.textShadow = '0 0 10px var(--neon-red), 0 0 20px var(--neon-red)';
+        });
+        document.querySelector('.pulse').style.animationDuration = '1s';
+      }
+    }
+    
+    // Initialize and update countdown every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+    
+    // Interactive background effect
+    document.addEventListener('mousemove', function(e) {
+      const gridBg = document.querySelector('.grid-bg');
+      const container = document.querySelector('.container');
+      const rect = container.getBoundingClientRect();
+      
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      const offsetX = ((e.clientX - centerX) / rect.width) * 5;
+      const offsetY = ((e.clientY - centerY) / rect.height) * 5;
+      
+      gridBg.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(1.1)`;
+    });
+  </script>
+  <!-- countdown timer end  -->
+      <h1 class="glow">स्वतंत्रता दिवस 2025 की हार्दिक शुभकामनाएं</h1>
   <div class="container">
    
     <!-- Main image display -->

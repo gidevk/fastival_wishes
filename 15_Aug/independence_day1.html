@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="og:title" content="स्वतंत्रता दिवस 2025 की हार्दिक शुभकामनाएं">
   <meta property="og:description" content="स्वतंत्रता दिवस 2025 की हार्दिक शुभकामनाएं">
-  <meta property="og:url" content="https://fastival-wishes.vercel.app/15_Aug/independence_day.html">
+  <meta property="og:url" content="https://fastival-wishes.vercel.app/15_Aug/independence_day1.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://fastival-wishes.vercel.app/15_Aug/independence1.jpg">
     <!-- <meta property="og:image" id="ogImageMeta" content="https://fastival-wishes.vercel.app/15_Aug/independence1.jpg"> -->
@@ -283,7 +283,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
     let selectedImageUrl = '/15_Aug/independence1.jpg';
-    const websiteUrl = 'https://fastival-wishes.vercel.app/15_Aug/independence_day.html';
+    const websiteUrl = 'https://fastival-wishes.vercel.app/15_Aug/independence_day1.html';
     let lastX = 0;
     
     // Confetti functions
@@ -320,38 +320,23 @@
     shareButton.addEventListener('mousemove', doIt);
     shareButton.addEventListener('click', doItHard);
     
-   function changeImage(clickedElement, newImageSrc) {
-  // Change the main image
+ function changeImage(clickedElement, newImageSrc) {
+  // 1. Change the main image
   const mainImage = document.getElementById('independenceImage');
   mainImage.src = newImageSrc;
-  
-  // Update the selected thumbnail style
+
+  // 2. Update the selected thumbnail style
   document.querySelectorAll('.image-option').forEach(img => {
     img.classList.remove('selected');
   });
   clickedElement.classList.add('selected');
-  
-  // Update the og:image meta tag dynamically
-  updateMetaImage(newImageSrc);
-}
 
-function updateMetaImage(imageUrl) {
-  // Find or create the og:image meta tag
-  let metaImage = document.querySelector('meta[property="og:image"]');
-  
-  if (!metaImage) {
-    metaImage = document.createElement('meta');
-    metaImage.setAttribute('property', 'og:image');
-    document.head.appendChild(metaImage);
+  // 3. Update the og:image meta tag (absolute URL)
+  const ogImageMeta = document.querySelector('meta[property="og:image"]');
+  if (ogImageMeta) {
+    const fullImageUrl = `https://fastival-wishes.vercel.app/15_Aug/${newImageSrc}`;
+    ogImageMeta.content = fullImageUrl;
   }
-  
-  // Update the content (use absolute URL if needed)
-  const absoluteUrl = new URL(imageUrl, window.location.href).href;
-  metaImage.content = absoluteUrl;
-  
-  // Optional: Notify social platforms of the change (for link sharing)
-  if (window.FB) FB.XFBML.parse(); // For Facebook
-  if (window.twttr) twttr.widgets.load(); // For Twitter
 }
     
     function openPopup() {

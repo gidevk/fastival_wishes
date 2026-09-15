@@ -372,11 +372,29 @@ function triggerFestiveCelebration(key) {
 }
 
 /**
+ * Helper to retrieve current active sender name from any input or localStorage
+ */
+function getActiveSenderName() {
+  const m = document.getElementById('mobileNameInput');
+  const s = document.getElementById('sideNameInput');
+  const main = document.getElementById('senderName');
+  const val = (m && m.value.trim()) || (s && s.value.trim()) || (main && main.value.trim()) || localStorage.getItem('user_sender_name') || '';
+  if (val) localStorage.setItem('user_sender_name', val);
+  return val || 'आप';
+}
+
+function syncAllNameInputs(val) {
+  ['mobileNameInput', 'sideNameInput', 'senderName'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.value !== val) el.value = val;
+  });
+}
+
+/**
  * Copies direct share link to clipboard with toast notification
  */
 function copyWishLink(key) {
-  const nameInput = document.getElementById('senderName');
-  const name = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : 'आप';
+  const name = getActiveSenderName();
   const baseUrl = window.location.href.split('?')[0].split('#')[0];
   const shareUrl = `${baseUrl}?from=${encodeURIComponent(name)}`;
 
@@ -389,8 +407,7 @@ function copyWishLink(key) {
 }
 
 function copySideWishLink(key) {
-  const nameInput = document.getElementById('sideNameInput');
-  const name = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : 'आप';
+  const name = getActiveSenderName();
   const baseUrl = window.location.href.split('?')[0].split('#')[0];
   const shareUrl = `${baseUrl}?from=${encodeURIComponent(name)}`;
 
@@ -1261,6 +1278,46 @@ function renderScheduleAndInfoWidgets(cfg, currentKey, isInSubfolder = false) {
     </div>
   `;
 
+  const quickWishWidgetContent = `
+    <div style="background: rgba(255,255,255,0.95); border-radius: 16px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); text-align: left; border: 1px solid rgba(0,0,0,0.06); margin-bottom: 20px; backdrop-filter: blur(5px);">
+      <h3 style="font-size: 16px; color: #222; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+        <span>⚡</span> <span>त्वरित विश क्रिएटर (Quick Wish)</span>
+      </h3>
+      <p style="font-size: 13px; color: #555; margin-bottom: 12px; line-height: 1.4;">
+        अपना नाम डालकर दोस्तों को तुरंत ${cfg.name} का विश लिंक भेजें!
+      </p>
+      <input type="text" id="mobileNameInput" placeholder="अपना नाम दर्ज करें" value="${localStorage.getItem('user_sender_name') || ''}" oninput="localStorage.setItem('user_sender_name', this.value.trim()); syncAllNameInputs(this.value.trim());" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #ccc; margin-bottom:12px; font-size:14px; outline:none;">
+      
+      <button onclick="copySideWishLink('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #25D366, #128C7E); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; box-shadow: 0 4px 10px rgba(37,211,102,0.3); margin-bottom: 8px;">
+        📱 विश लिंक कॉपी करें
+      </button>
+
+      <button onclick="openFestivalGameModal('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #d32f2f, #c2185b); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(211,47,47,0.3); margin-bottom: 8px; animation: pulse 2s infinite alternate;">
+        🎮 ${cfg.name} स्पेशल गेम खेलें
+      </button>
+
+      <button onclick="downloadCustomCanvasCard(null, '${cfg.key}', getActiveSenderName())" style="width:100%; background: linear-gradient(135deg, #e91e63, #ad1457); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(233,30,99,0.25); margin-bottom: 8px;">
+        🎨 HD विश कार्ड डाउनलोड करें (Canvas)
+      </button>
+
+      <button onclick="spinLuckyFestivalBlessing('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #ff9800, #e65100); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(255,152,0,0.25); margin-bottom: 8px;">
+        🎡 लकी आशीर्वाद स्पिनर (Fortune Wheel)
+      </button>
+
+      <button onclick="openQRCodeModal(window.location.href.split('?')[0] + '?from=' + encodeURIComponent(getActiveSenderName()))" style="width:100%; background: linear-gradient(135deg, #9c27b0, #6a1b9a); color:white; border:none; padding:10px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(156,39,176,0.25); margin-bottom: 8px;">
+        📱 QR कोड से शेयर करें
+      </button>
+
+      <button onclick="playTempleBell(); playFestiveChime();" style="width:100%; background: linear-gradient(135deg, #009688, #004d40); color:white; border:none; padding:10px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(0,150,136,0.25); margin-bottom: 8px;">
+        🔔 दिव्य मंदिर घंटी (Temple Bell Audio)
+      </button>
+
+      <button onclick="downloadFestivalCalendarEvent('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #3f51b5, #1a237e); color:white; border:none; padding:10px; border-radius:8px; font-weight:600; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(63,81,181,0.25);">
+        🔔 कैलेंडर में जोड़ें (.ics)
+      </button>
+    </div>
+  `;
+
   // Render into right panel for desktop
   const rightPanel = document.getElementById('rightSidePanel');
   if (rightPanel) {
@@ -1269,7 +1326,7 @@ function renderScheduleAndInfoWidgets(cfg, currentKey, isInSubfolder = false) {
 
   // Render into mobile section for mobile viewports
   const infoBoxMobile = document.getElementById('festivalInfoBoxMobile');
-  if (infoBoxMobile) infoBoxMobile.innerHTML = infoWidgetContent;
+  if (infoBoxMobile) infoBoxMobile.innerHTML = quickWishWidgetContent + infoWidgetContent;
 
   const scheduleBoxMobile = document.getElementById('upcomingScheduleBoxMobile');
   if (scheduleBoxMobile) scheduleBoxMobile.innerHTML = scheduleWidgetContent;
@@ -1366,4 +1423,6 @@ window.openFestivalGameModal = openFestivalGameModal;
 window.stopFestivalGame = stopFestivalGame;
 window.runFestivalGameEngine = runFestivalGameEngine;
 window.shareGameHighScore = shareGameHighScore;
+window.getActiveSenderName = getActiveSenderName;
+window.syncAllNameInputs = syncAllNameInputs;
 

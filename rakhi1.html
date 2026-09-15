@@ -3,26 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>रक्षाबंधन 2025 शुभकामनाएं</title>
+  <title>रक्षाबंधन शुभकामनाएं</title>
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
       text-align: center;
       background: #ffebee;
-      padding: 20px;
-      margin: 0;
+      padding-bottom: 20px;
+    }
+    nav {
+      background: linear-gradient(90deg, #d81b60, #f06292);
+      padding: 12px 10px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+    nav a:hover, nav a.active {
+      background: rgba(255, 255, 255, 0.25);
     }
     .container {
-      width: 100%;
-      max-width: 400px;
-      margin: auto;
+      width: 92%;
+      max-width: 440px;
+      margin: 20px auto;
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       padding: 20px;
+    }
+    .glow {
+      font-size: 24px;
+      color: #c2185b;
+      margin: 15px 0;
     }
     img {
       width: 100%;
@@ -32,68 +57,91 @@
     }
     .image-options {
       display: flex;
-      overflow-x: auto;
       gap: 10px;
-      padding: 10px 0;
-      margin: 15px 0;
+      justify-content: center;
+      margin-bottom: 15px;
     }
     .image-option {
-      width: 80px;
-      height: 80px;
+      width: 65px;
+      height: 65px;
       border-radius: 8px;
       border: 2px solid transparent;
       cursor: pointer;
       object-fit: cover;
     }
     .image-option.selected {
-      border-color: #f06292;
+      border-color: #d81b60;
     }
     input[type="text"] {
       width: 100%;
       padding: 12px;
-      margin: 15px 0;
+      margin-bottom: 15px;
       font-size: 16px;
       border-radius: 8px;
       border: 1px solid #ddd;
     }
     button {
-      margin-top: 10px;
-      padding: 12px 20px;
+      padding: 14px;
       font-size: 16px;
-      background-color: #f06292;
+      font-weight: bold;
+      background-color: #d81b60;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       width: 100%;
     }
-    .share-message {
-      background: #fff5f5;
-      padding: 12px;
-      border-radius: 8px;
-      margin: 15px 0;
-      font-size: 14px;
-    }
-    #loading {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
+    .countdown-section {
+      background: #880e4f;
       color: white;
-      font-size: 20px;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 15px;
+    }
+    .countdown-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+    .countdown-box {
+      background: rgba(255,255,255,0.2);
+      border-radius: 6px;
+      padding: 6px;
+      min-width: 45px;
+    }
+    .digit {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .digit-label {
+      font-size: 9px;
     }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html" class="active">रक्षाबंधन</a>
+    <a href="15_Aug/independence_day.html">स्वतंत्रता दिवस</a>
+    <a href="ganesh.html">गणेश चतुर्थी</a>
+    <a href="navratri.html">नवरात्रि</a>
+    <a href="diwali.html">दिवाली</a>
+    <a href="holi.html">होली</a>
+    <a href="eid.html">ईद</a>
+  </nav>
+
+  <h1 class="glow" id="festivalHeading">🌸 रक्षाबंधन की शुभकामनाएं 🌸</h1>
+
   <div class="container">
-    <h1>🌸 रक्षाबंधन 2025 की शुभकामनाएं 🌸</h1>
-    
+    <div class="countdown-section">
+      <div id="countdownStatus" style="font-size: 13px; margin-bottom: 8px;">रक्षाबंधन आने में बचा समय:</div>
+      <div class="countdown-wrapper">
+        <div class="countdown-box"><div id="days" class="digit">00</div><div class="digit-label">दिन</div></div>
+        <div class="countdown-box"><div id="hours" class="digit">00</div><div class="digit-label">घंटे</div></div>
+        <div class="countdown-box"><div id="minutes" class="digit">00</div><div class="digit-label">मिनट</div></div>
+        <div class="countdown-box"><div id="seconds" class="digit">00</div><div class="digit-label">सेकंड</div></div>
+      </div>
+    </div>
+
     <img src="rakhi1.jpg" alt="रक्षाबंधन" id="rakhiImage">
     
     <div class="image-options">
@@ -103,139 +151,34 @@
       <img src="rakhi4.jpg" class="image-option" onclick="changeImage(this, 'rakhi4.jpg')">
       <img src="rakhi5.jpg" class="image-option" onclick="changeImage(this, 'rakhi5.jpg')">
     </div>
-    
-    <div class="share-message">
-      इन प्यारी शुभकामनाओं को साझा करें और अपने प्रियजनों को खुशी दें!
-    </div>
-    
+
     <input type="text" id="senderName" placeholder="आपका नाम">
     <button onclick="shareOnWhatsApp()">WhatsApp पर शेयर करें</button>
   </div>
 
-  <div id="loading">तैयार हो रहा है... कृपया प्रतीक्षा करें</div>
-
+  <script src="festival-core.js"></script>
   <script>
     let selectedImageUrl = 'rakhi1.jpg';
-    const websiteUrl = 'https://fastival-wishes.vercel.app/';
-    
+    let festivalWishes = [];
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const info = initFestivalPage('rakhi', false);
+      festivalWishes = info.cfg.wishes;
+    });
+
     function changeImage(element, imageUrl) {
       document.getElementById('rakhiImage').src = imageUrl;
       selectedImageUrl = imageUrl;
-      document.querySelectorAll('.image-option').forEach(img => {
-        img.classList.remove('selected');
-      });
+      document.querySelectorAll('.image-option').forEach(img => img.classList.remove('selected'));
       element.classList.add('selected');
     }
-    
+
     function shareOnWhatsApp() {
-      const name = document.getElementById("senderName").value.trim() || "भैया";
-      const loading = document.getElementById('loading');
-      
-      const wishes = [
-        `💖 रक्षाबंधन की हार्दिक शुभकामनाएं!\nआपका ${name}`,
-        `🌸 भगवान आपको खुशियाँ दें!\nआपका ${name}`,
-        `💝 प्यार और सम्मान के साथ!\nआपका ${name}`,
-        `✨ आपके जीवन में खुशियाँ भर दें!\nआपका ${name}`,
-        `🎀 हमेशा साथ रहेंगे!\nआपका ${name}`
-      ];
-      
+      const name = document.getElementById("senderName").value.trim() || "शुभचिंतक";
+      const wishes = festivalWishes(name);
       const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
-      const fullMessage = `${randomWish}\n\nअधिक शुभकामनाएं भेजने के लिए यहाँ जाएं: ${websiteUrl}`;
-      
-      loading.style.display = 'flex';
-      
-      // Create a canvas to combine image and text
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const img = new Image();
-      img.crossOrigin = 'Anonymous';
-      img.src = selectedImageUrl;
-      
-      img.onload = function() {
-        canvas.width = img.width;
-        canvas.height = img.height + 100; // Extra space for text
-        
-        // Draw image
-        ctx.drawImage(img, 0, 0, img.width, img.height);
-        
-        // Add text background
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-        ctx.fillRect(0, img.height, img.width, 100);
-        
-        // Add text
-        ctx.fillStyle = '#d81b60';
-        ctx.font = 'bold 18px Arial';
-        const lines = randomWish.split('\n');
-        
-        // Draw each line of text
-        lines.forEach((line, index) => {
-          ctx.fillText(line, 20, img.height + 30 + (index * 25));
-        });
-        
-        // Convert canvas to blob
-        canvas.toBlob(function(blob) {
-          const imageUrl = URL.createObjectURL(blob);
-          
-          // For mobile devices
-          if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-            if (navigator.share) {
-              // Use Web Share API if available
-              const file = new File([blob], 'raksha-bandhan.jpg', { type: 'image/jpeg' });
-              navigator.share({
-                title: 'रक्षाबंधन शुभकामनाएं',
-                text: fullMessage,
-                files: [file]
-              }).catch(err => {
-                console.error('Share failed:', err);
-                // Fallback to WhatsApp with text only
-                window.location.href = `whatsapp://send?text=${encodeURIComponent(fullMessage)}`;
-              }).finally(() => {
-                loading.style.display = 'none';
-              });
-            } else {
-              // Fallback for mobile browsers without Web Share API
-              // First download the image
-              const downloadLink = document.createElement('a');
-              downloadLink.href = imageUrl;
-              downloadLink.download = 'raksha-bandhan-wish.jpg';
-              document.body.appendChild(downloadLink);
-              downloadLink.click();
-              document.body.removeChild(downloadLink);
-              
-              // Then open WhatsApp with the text
-              setTimeout(() => {
-                window.location.href = `whatsapp://send?text=${encodeURIComponent(fullMessage)}`;
-                loading.style.display = 'none';
-              }, 1000);
-            }
-          } else {
-            // For desktop - download image and open WhatsApp web
-            const downloadLink = document.createElement('a');
-            downloadLink.href = imageUrl;
-            downloadLink.download = 'raksha-bandhan-wish.jpg';
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-            
-            // Open WhatsApp web
-            window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(fullMessage)}`);
-            loading.style.display = 'none';
-          }
-          
-          // Clean up
-          setTimeout(() => URL.revokeObjectURL(imageUrl), 1000);
-        }, 'image/jpeg', 0.9);
-      };
-      
-      img.onerror = function() {
-        // If image fails to load, just share text
-        loading.style.display = 'none';
-        if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-          window.location.href = `whatsapp://send?text=${encodeURIComponent(fullMessage)}`;
-        } else {
-          window.open(`https://web.whatsapp.com/send?text=${encodeURIComponent(fullMessage)}`);
-        }
-      };
+      const fullMessage = `${randomWish}\n${window.location.href}`;
+      window.location.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(fullMessage)}`;
     }
   </script>
 </body>

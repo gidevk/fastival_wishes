@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="रक्षाबंधन की शुभकामनाएं" />
-  <meta property="og:description" content="अपने प्रियजनों को खास रक्षाबंधन शुभकामनाएं भेजें!" />
-  <meta property="og:url" content="https://fastival-wishes.vercel.app/">
+  <meta property="og:title" content="गणेश चतुर्थी की हार्दिक शुभकामनाएं">
+  <meta property="og:description" content="गणपति बप्पा मोरया! गणेश चतुर्थी की हार्दिक शुभकामनाएं भेजें!">
+  <meta property="og:url" content="https://fastival-wishes.vercel.app/ganesh.html">
   <meta property="og:type" content="website">
-  <meta property="og:image" id="ogImageMeta" content="rakhi1.jpg">
+  <meta property="og:image" id="ogImageMeta" content="ganesh1.jpg">
 
-  <title>रक्षाबंधन की शुभकामनाएं</title>
+  <title>गणेश चतुर्थी की हार्दिक शुभकामनाएं</title>
 
   <style>
     * {
@@ -18,21 +18,18 @@
       padding: 0;
     }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      text-align: center;
-      background: linear-gradient(135deg, #ffe0e0, #ffdcdc, #fff0f5);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2, #ffcc80);
       min-height: 100vh;
+      text-align: center;
       padding-bottom: 30px;
-      position: relative;
     }
-    
-    /* Navigation Bar */
+
     nav {
-      background: linear-gradient(90deg, #d81b60, #f06292);
+      background: linear-gradient(90deg, #e65100, #f57c00, #ff9800);
       padding: 12px 10px;
       display: flex;
       justify-content: center;
-      align-items: center;
       gap: 12px;
       flex-wrap: wrap;
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
@@ -50,53 +47,82 @@
       transition: all 0.3s ease;
     }
     nav a:hover, nav a.active {
-      background: rgba(255, 255, 255, 0.25);
-      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.3);
+      color: #fff;
     }
 
-    /* Title Banner */
-    .glow {
-      font-size: 28px;
-      font-weight: bold;
-      color: #ad1457;
-      margin: 20px 10px 10px;
-      text-shadow: 0 0 10px rgba(240, 98, 146, 0.4);
-      line-height: 1.3;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Container Box */
     .container {
       width: 100%;
       background: rgba(255, 255, 255, 0.95);
       border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(240, 98, 146, 0.25);
+      box-shadow: 0 10px 25px rgba(230, 81, 0, 0.25);
       padding: 24px 20px;
       position: relative;
       overflow: hidden;
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(240, 98, 146, 0.2);
+      border: 2px solid #ff9800;
       margin-bottom: 20px;
+      backdrop-filter: blur(5px);
     }
 
-    /* Main Image */
+    .glow {
+      font-size: 26px;
+      font-weight: bold;
+      color: #e65100;
+      margin: 20px 10px 10px;
+      text-shadow: 0 0 10px #ffe0b2, 0 0 20px #ffb74d;
+      line-height: 1.3;
+    }
+
+    .countdown-section {
+      background: linear-gradient(135deg, #e65100, #f57c00);
+      color: white;
+      border-radius: 14px;
+      padding: 15px 10px;
+      margin: 15px 0 20px;
+      box-shadow: 0 4px 12px rgba(230, 81, 0, 0.3);
+    }
+    .countdown-title {
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .countdown-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .countdown-box {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 8px;
+      padding: 8px 6px;
+      min-width: 55px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .digit {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .digit-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      opacity: 0.9;
+      margin-top: 2px;
+    }
+
     .main-img-container {
-      position: relative;
       border-radius: 12px;
       overflow: hidden;
       margin-bottom: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
     .main-img-container img {
       width: 100%;
       height: auto;
       display: block;
       border-radius: 12px;
-      transition: transform 0.3s ease;
     }
 
-    /* Image Options Thumbnails */
     .image-options {
       display: flex;
       justify-content: center;
@@ -115,60 +141,18 @@
       transition: all 0.25s ease;
     }
     .image-option.selected, .image-option:hover {
-      border-color: #d81b60;
+      border-color: #e65100;
       transform: scale(1.08);
     }
 
-    /* Countdown Styles */
-    .countdown-section {
-      background: linear-gradient(135deg, #880e4f, #ad1457);
-      color: white;
-      border-radius: 14px;
-      padding: 15px 10px;
-      margin: 15px 0 20px;
-      box-shadow: 0 4px 12px rgba(136, 14, 79, 0.3);
-    }
-    .countdown-title {
-      font-size: 13px;
-      letter-spacing: 0.5px;
-      margin-bottom: 10px;
-      opacity: 0.95;
-      font-weight: 500;
-    }
-    .countdown-wrapper {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-    .countdown-box {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 8px;
-      padding: 8px 6px;
-      min-width: 55px;
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .digit {
-      font-size: 20px;
-      font-weight: 800;
-      color: #fff;
-    }
-    .digit-label {
-      font-size: 9px;
-      text-transform: uppercase;
-      opacity: 0.8;
-      margin-top: 2px;
-    }
-
-    /* Input & Buttons */
     .share-message {
       font-size: 14px;
-      color: #6a1b9a;
-      background: #f3e5f5;
+      color: #bf360c;
+      background: #fbe9e7;
       padding: 12px;
       border-radius: 10px;
       margin: 15px 0;
-      border-left: 4px solid #ab47bc;
+      border-left: 4px solid #ff7043;
       line-height: 1.4;
     }
 
@@ -177,13 +161,9 @@
       padding: 12px 15px;
       font-size: 15px;
       border-radius: 10px;
-      border: 2px solid #f48fb1;
+      border: 2px solid #ff9800;
       outline: none;
-      transition: border-color 0.3s ease;
       margin-bottom: 15px;
-    }
-    input[type="text"]:focus {
-      border-color: #d81b60;
     }
 
     .btn-share {
@@ -192,23 +172,18 @@
       font-size: 16px;
       font-weight: bold;
       color: white;
-      background: linear-gradient(135deg, #25D366, #128C7E);
+      background: linear-gradient(135deg, #e65100, #f57c00);
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+      box-shadow: 0 4px 12px rgba(230, 81, 0, 0.35);
       transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
     }
     .btn-share:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.45);
     }
 
-    /* Popup Modal */
+    /* Modal */
     .popup {
       display: none;
       position: fixed;
@@ -221,7 +196,6 @@
       align-items: center;
       z-index: 1000;
       padding: 20px;
-      backdrop-filter: blur(4px);
     }
     .popup-content {
       background: white;
@@ -230,19 +204,13 @@
       text-align: center;
       width: 100%;
       max-width: 360px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      animation: popIn 0.3s ease;
-    }
-    @keyframes popIn {
-      from { transform: scale(0.85); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
     }
     .wish-card {
-      background: #fff5f8;
+      background: #fff3e0;
       border-radius: 12px;
       padding: 15px;
       margin: 15px 0;
-      border: 1px solid #f8bbd0;
+      border: 1px solid #ffe0b2;
     }
     .wish-card img {
       width: 100%;
@@ -268,12 +236,11 @@
       border-radius: 8px;
       font-weight: 600;
       font-size: 14px;
-      transition: opacity 0.2s ease;
     }
     .link-wa { background: #25D366; color: white; }
     .link-fb { background: #1877F2; color: white; }
     .link-tg { background: #0088cc; color: white; }
-    .link-dl { background: #ec407a; color: white; }
+    .link-dl { background: #e65100; color: white; }
     .btn-close {
       margin-top: 10px;
       background: #757575;
@@ -288,23 +255,21 @@
 </head>
 <body>
 
-  <!-- Global Navigation -->
   <nav>
-    <a href="index.html" class="active">रक्षाबंधन</a>
+    <a href="index.html">रक्षाबंधन</a>
     <a href="15_Aug/independence_day.html">स्वतंत्रता दिवस</a>
     <a href="sankranti.html">मकर संक्रांति</a>
     <a href="shivratri.html">महाशिवरात्रि</a>
     <a href="holi.html">होली</a>
     <a href="eid.html">ईद</a>
     <a href="janmashtami.html">जन्माष्टमी</a>
-    <a href="ganesh.html">गणेश चतुर्थी</a>
+    <a href="ganesh.html" class="active">गणेश चतुर्थी</a>
     <a href="navratri.html">नवरात्रि</a>
     <a href="dussehra.html">दशहरा</a>
     <a href="diwali.html">दिवाली</a>
   </nav>
 
-  <!-- Title Banner -->
-  <h1 class="glow" id="festivalHeading">🌸 रक्षाबंधन की शुभकामनाएं 🌸</h1>
+  <h1 class="glow" id="festivalHeading">🐘 गणेश चतुर्थी 2027 की हार्दिक शुभकामनाएं 🐘</h1>
 
   <!-- Multi-Column Layout Wrapper -->
   <div class="page-layout-wrapper">
@@ -316,48 +281,29 @@
     <main class="main-center-content">
       <div class="container">
         
-        <!-- Countdown Timer -->
         <div class="countdown-section">
-          <div id="countdownStatus" class="countdown-title">रक्षाबंधन आने में बचा समय:</div>
+          <div id="countdownStatus" class="countdown-title">गणेश चतुर्थी आने में बचा समय:</div>
           <div class="countdown-wrapper">
-            <div class="countdown-box">
-              <div id="days" class="digit">00</div>
-              <div class="digit-label">दिन</div>
-            </div>
-            <div class="countdown-box">
-              <div id="hours" class="digit">00</div>
-              <div class="digit-label">घंटे</div>
-            </div>
-            <div class="countdown-box">
-              <div id="minutes" class="digit">00</div>
-              <div class="digit-label">मिनट</div>
-            </div>
-            <div class="countdown-box">
-              <div id="seconds" class="digit">00</div>
-              <div class="digit-label">सेकंड</div>
-            </div>
+            <div class="countdown-box"><div id="days" class="digit">00</div><div class="digit-label">दिन</div></div>
+            <div class="countdown-box"><div id="hours" class="digit">00</div><div class="digit-label">घंटे</div></div>
+            <div class="countdown-box"><div id="minutes" class="digit">00</div><div class="digit-label">मिनट</div></div>
+            <div class="countdown-box"><div id="seconds" class="digit">00</div><div class="digit-label">सेकंड</div></div>
           </div>
         </div>
 
-        <!-- Main Card Image -->
         <div class="main-img-container">
-          <img src="rakhi1.jpg" alt="रक्षाबंधन शुभकामनाएं" id="rakhiImage">
+          <img src="ganesh1.jpg" alt="गणेश चतुर्थी 2027" id="ganeshImage">
         </div>
         
-        <!-- Image Selector -->
         <div class="image-options">
-          <img src="rakhi1.jpg" class="image-option selected" onclick="changeImage(this, 'rakhi1.jpg')">
-          <img src="rakhi2.jpg" class="image-option" onclick="changeImage(this, 'rakhi2.jpg')">
-          <img src="rakhi3.jpg" class="image-option" onclick="changeImage(this, 'rakhi3.jpg')">
-          <img src="rakhi4.jpg" class="image-option" onclick="changeImage(this, 'rakhi4.jpg')">
-          <img src="rakhi5.jpg" class="image-option" onclick="changeImage(this, 'rakhi5.jpg')">
+          <img src="ganesh1.jpg" class="image-option selected" onclick="changeImage(this, 'ganesh1.jpg')">
         </div>
 
         <div class="share-message">
-          एक प्यारी-सी शुभकामना भेजें और अपनी बहन/भाई को जताएं कि आप उन्हें कितना प्यार करते हैं! 💝
+          गणपति बप्पा मोरया! भगवान गणेश जी का आशीर्वाद अपने दोस्तों और परिवार के साथ साझा करें! 🐘🌺
         </div>
 
-        <input type="text" id="senderName" placeholder="अपना नाम दर्ज करें (उदा. राहुल)">
+        <input type="text" id="senderName" placeholder="अपना नाम दर्ज करें (उदा. सचिन)">
         <button class="btn-share" onclick="openPopup()">📱 WhatsApp पर शेयर करें</button>
       </div>
 
@@ -373,11 +319,10 @@
 
   </div>
 
-  <!-- Share Popup Modal -->
   <div class="popup" id="sharePopup">
     <div class="popup-content">
       <div class="wish-card">
-        <img src="rakhi1.jpg" id="shareImage" alt="रक्षाबंधन कार्ड">
+        <img src="ganesh1.jpg" id="shareImage" alt="गणेश चतुर्थी कार्ड">
         <div class="wish-text" id="wishText"></div>
       </div>
       <div class="modal-links">
@@ -390,25 +335,22 @@
     </div>
   </div>
 
-  <!-- Include Shared Engine -->
   <script src="festival-core.js"></script>
   <script>
-    let selectedImageUrl = 'rakhi1.jpg';
+    let selectedImageUrl = 'ganesh1.jpg';
     let targetYear = 2027;
     let festivalWishes = [];
 
     document.addEventListener('DOMContentLoaded', function() {
-      const info = initFestivalPage('rakhi', false);
+      const info = initFestivalPage('ganesh', false);
       targetYear = info.year;
       festivalWishes = info.cfg.wishes;
     });
 
     function changeImage(element, imageUrl) {
-      document.getElementById('rakhiImage').src = imageUrl;
+      document.getElementById('ganeshImage').src = imageUrl;
       selectedImageUrl = imageUrl;
-      document.querySelectorAll('.image-option').forEach(img => {
-        img.classList.remove('selected');
-      });
+      document.querySelectorAll('.image-option').forEach(img => img.classList.remove('selected'));
       element.classList.add('selected');
     }
 
@@ -428,11 +370,11 @@
       document.getElementById("facebookLink").href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(websiteUrl)}&quote=${encodeURIComponent(message)}`;
       document.getElementById("telegramLink").href = `https://t.me/share/url?url=${encodeURIComponent(websiteUrl)}&text=${encodeURIComponent(message)}`;
       document.getElementById("downloadLink").href = selectedImageUrl;
-      document.getElementById("downloadLink").download = `raksha-bandhan-wish-${name}.jpg`;
+      document.getElementById("downloadLink").download = `ganesh-chaturthi-wish-${name}.jpg`;
 
       if (navigator.share) {
         navigator.share({
-          title: `रक्षाबंधन ${targetYear} शुभकामनाएं`,
+          title: `गणेश चतुर्थी ${targetYear} शुभकामनाएं`,
           text: fullText,
           url: websiteUrl
         }).catch(err => {
@@ -447,6 +389,5 @@
       document.getElementById("sharePopup").style.display = "none";
     }
   </script>
-
 </body>
 </html>

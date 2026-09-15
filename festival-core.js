@@ -615,6 +615,131 @@ function initVirtualDiyaFloatingButton(cfg) {
 }
 
 /**
+ * R&D Feature: Deep Resonant Temple Bell Web Audio Synth
+ */
+function playTempleBell() {
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+    const ctx = new AudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5 pitch
+    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 2.5);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 2.5);
+  } catch(e) {}
+}
+
+/**
+ * R&D Feature: Interactive Blessing Fortune Wheel / Spinner
+ */
+const FESTIVAL_BLESSINGS = [
+  "🌟 इस पर्व पर आपके जीवन में अपार सुख, सफलता और शांति का आगमन होगा!",
+  "🌺 मां लक्ष्मी और ईश्वर का दिव्य आशीर्वाद आपके पूरे परिवार पर सदा बना रहेगा!",
+  "💖 आपके घर में हमेशा आरोग्य, समृद्धि और असीम प्रेम की वर्षा होगी!",
+  "🎯 इस वर्ष आपके सभी संकल्प सिद्ध होंगे और सफलता के नए द्वार खुलेंगे!",
+  "🍬 मिठास और खुशियों से भर जाएगा आपका हर दिन, हर पल!",
+  "☀️ प्रकाश और सकारात्मक ऊर्जा आपके जीवन से अंधकार दूर कर देगी!"
+];
+
+function spinLuckyFestivalBlessing(key) {
+  const target = getFestivalTarget(key);
+  const cfg = target ? target.cfg : { name: 'उत्सव', emoji: '🎉' };
+
+  let modal = document.getElementById('blessingModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'blessingModal';
+    modal.style.cssText = `
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center;
+      z-index: 2100; padding: 20px; backdrop-filter: blur(5px);
+    `;
+    document.body.appendChild(modal);
+  }
+
+  const randomIdx = Math.floor(Math.random() * FESTIVAL_BLESSINGS.length);
+  const blessing = FESTIVAL_BLESSINGS[randomIdx];
+
+  modal.innerHTML = `
+    <div style="background: white; border-radius: 20px; padding: 25px 20px; text-align: center; max-width: 380px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 2px solid #ff9800; animation: popIn 0.3s ease;">
+      <h3 style="color: #e65100; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+        <span>🎡</span> <span>लकी ${cfg.name} आशीर्वाद</span>
+      </h3>
+      <p style="font-size: 12px; color: #666; margin-bottom: 16px;">आपका विशेष शुभकामना भाग्य संदेश:</p>
+      
+      <div id="blessingCardBox" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 20px 15px; border-radius: 14px; border: 1px dashed #ff9800; margin-bottom: 18px;">
+        <p style="font-size: 15px; color: #d81b60; font-weight: bold; line-height: 1.5; margin: 0;">
+          "${blessing}"
+        </p>
+      </div>
+
+      <button onclick="spinLuckyFestivalBlessing('${key}')" style="width: 100%; background: linear-gradient(135deg, #ff9800, #e65100); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; margin-bottom: 10px; box-shadow: 0 4px 12px rgba(255,152,0,0.3);">
+        🎲 फिर से स्पिन करें (Re-spin)
+      </button>
+
+      <button onclick="document.getElementById('blessingModal').style.display='none'" style="width: 100%; background: #757575; color: white; border: none; padding: 10px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px;">
+        बंद करें
+      </button>
+    </div>
+  `;
+
+  modal.style.display = 'flex';
+  triggerFestiveCelebration(key);
+  playTempleBell();
+}
+
+/**
+ * R&D Feature: Click & Tap Particle Splash Trail
+ */
+function initClickSplashParticles() {
+  const emojis = ['✨', '🌸', '🪔', '🎨', '💖', '🌺', '⭐'];
+  document.addEventListener('click', (e) => {
+    // Ignore button clicks
+    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.tagName === 'INPUT') return;
+
+    for (let i = 0; i < 5; i++) {
+      const p = document.createElement('span');
+      p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      const x = e.clientX + (Math.random() * 40 - 20);
+      const y = e.clientY + (Math.random() * 40 - 20);
+
+      p.style.cssText = `
+        position: fixed;
+        left: ${x}px;
+        top: ${y}px;
+        font-size: ${Math.random() * 12 + 16}px;
+        pointer-events: none;
+        z-index: 3000;
+        animation: clickSplashAnim 1s ease-out forwards;
+      `;
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 1000);
+    }
+  });
+
+  if (!document.getElementById('clickSplashStyle')) {
+    const st = document.createElement('style');
+    st.id = 'clickSplashStyle';
+    st.textContent = `
+      @keyframes clickSplashAnim {
+        0% { transform: scale(0.5) translateY(0); opacity: 1; }
+        50% { transform: scale(1.3) translateY(-25px); opacity: 0.9; }
+        100% { transform: scale(1) translateY(-50px); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(st);
+  }
+}
+
+/**
  * Spawns glowing floating Diyas across the screen
  */
 function spawnFloatingDiyas() {
@@ -782,6 +907,232 @@ function openQRCodeModal(shareUrl) {
 }
 
 /**
+ * Interactive Festival Mini-Game Engine (Holi Gulal Blast, Diwali Fireworks, Modak Catcher, Matki Phod, Kite Fighter, etc.)
+ */
+const FESTIVAL_GAME_PRESETS = {
+  holi: { title: '🎨 होली गुलाल & वॉटर बलून ब्लास्ट', targetText: 'गुलाल बलून पर टैप करें!', items: ['🔴', '🟡', '🔵', '🟢', '🟣', '🎈'], bg: 'linear-gradient(135deg, #4a148c, #880e4f)' },
+  diwali: { title: '🪔 दिवाली रॉकेट & आतिशबाजी', targetText: 'रॉकेट को फोड़ें!', items: ['🚀', '🪔', '✨', '🎆', '💥'], bg: 'linear-gradient(135deg, #1a237e, #311b92)' },
+  ganesh: { title: '🐘 बप्पा मोदक कैचर', targetText: 'मोदक पर टैप करें!', items: ['🍬', '🍯', '🌸', '🍎', '🔱'], bg: 'linear-gradient(135deg, #e65100, #bf360c)' },
+  janmashtami: { title: '🪈 माखन मटकी फोड़ चेलेंज', targetText: 'मटकी फोड़ें!', items: ['🏺', '🍯', '🦚', '🪈'], bg: 'linear-gradient(135deg, #0d47a1, #006064)' },
+  sankranti: { title: '🪁 पतंगबाज़ - काइट कटिंग फाइटर', targetText: 'पतंग काटें!', items: ['🪁', '☀️', '🌾', '🟡'], bg: 'linear-gradient(135deg, #004d40, #00695c)' },
+  independence: { title: '🇮🇳 तिरंगा स्टार चेज़र', targetText: 'स्टार्स पकड़ें!', items: ['🧡', '🤍', '💚', '⭐', '🇮🇳'], bg: 'linear-gradient(135deg, #e65100, #1b5e20)' },
+  rakhi: { title: '🌸 राखी & गिफ्ट बॉक्स कैचर', targetText: 'राखी पर क्लिक करें!', items: ['🌸', '🎀', '🎁', '💖', '💐'], bg: 'linear-gradient(135deg, #880e4f, #4a148c)' },
+  shivratri: { title: '🔱 शिवलिंग जलाभिषेक & बेलपत्र', targetText: 'बेलपत्र चढ़ाएं!', items: ['🌿', '💧', '🔱', '🔔'], bg: 'linear-gradient(135deg, #1a237e, #004d40)' },
+  navratri: { title: '💃 डांडिया बीट & गरबा टैप', targetText: 'डांडिया टैप करें!', items: ['🥢', '💃', '🏵️', '✨'], bg: 'linear-gradient(135deg, #b71c1c, #880e4f)' },
+  dussehra: { title: '🏹 राम बाण रावण दहन', targetText: 'रावण पर निशाना साधें!', items: ['🏹', '🔥', '🎯', '💥'], bg: 'linear-gradient(135deg, #bf360c, #4a148c)' },
+  eid: { title: '🌙 ईद का चांद & ईदी कैचर', targetText: 'चांद & ईदी पकड़ें!', items: ['🌙', '⭐', '🤲', '🎁'], bg: 'linear-gradient(135deg, #004d40, #1a237e)' }
+};
+
+let gameActiveTimer = null;
+let gameSpawnInterval = null;
+
+function openFestivalGameModal(key) {
+  const target = getFestivalTarget(key);
+  const cfg = target ? target.cfg : { name: 'उत्सव', key: 'holi' };
+  const preset = FESTIVAL_GAME_PRESETS[key] || FESTIVAL_GAME_PRESETS['holi'];
+  const highScoreKey = `game_highscore_${key}`;
+  const savedHighScore = parseInt(localStorage.getItem(highScoreKey) || '0', 10);
+
+  let modal = document.getElementById('festivalGameModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'festivalGameModal';
+    modal.style.cssText = `
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85); display: flex; justify-content: center; align-items: center;
+      z-index: 2200; padding: 15px; backdrop-filter: blur(8px);
+    `;
+    document.body.appendChild(modal);
+  }
+
+  modal.innerHTML = `
+    <div style="background: ${preset.bg}; border-radius: 20px; padding: 20px; text-align: center; max-width: 440px; width: 100%; box-shadow: 0 12px 35px rgba(0,0,0,0.5); border: 2px solid #ffd700; color: white; position: relative; overflow: hidden; animation: popIn 0.3s ease;">
+      
+      <button onclick="stopFestivalGame(); document.getElementById('festivalGameModal').style.display='none';" style="position: absolute; top: 12px; right: 14px; background: rgba(255,255,255,0.2); color: white; border: none; font-size: 18px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold;">✕</button>
+
+      <h3 style="font-size: 18px; margin-bottom: 4px; color: #ffd700; display: flex; align-items: center; justify-content: center; gap: 6px;">
+        <span>🎮</span> <span>${preset.title}</span>
+      </h3>
+      <p style="font-size: 12px; color: rgba(255,255,255,0.85); margin-bottom: 12px;">${preset.targetText} (25 सेकंड का पावन चैलेंज!)</p>
+
+      <div style="display: flex; justify-content: space-between; background: rgba(0,0,0,0.35); padding: 8px 14px; border-radius: 12px; margin-bottom: 12px; font-size: 13px; font-weight: bold; border: 1px solid rgba(255,215,0,0.3);">
+        <div>🎯 स्कोर: <span id="gameCurrentScore" style="color: #00e676; font-size: 16px;">0</span></div>
+        <div>⏱️ समय: <span id="gameTimer" style="color: #ffea00; font-size: 16px;">25s</span></div>
+        <div>🏆 बेस्ट: <span id="gameHighScore" style="color: #ff4081; font-size: 16px;">${savedHighScore}</span></div>
+      </div>
+
+      <div id="gamePlayArea" style="height: 260px; background: rgba(0,0,0,0.25); border-radius: 14px; border: 2px dashed rgba(255,215,0,0.4); position: relative; overflow: hidden; margin-bottom: 12px; touch-action: manipulation;">
+        <div id="gameStartOverlay" style="position: absolute; top:0; left:0; width:100%; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; background: rgba(0,0,0,0.5); border-radius:12px; padding:20px;">
+          <p style="font-size: 14px; margin-bottom: 14px; line-height: 1.5;">स्क्रीन पर आने वाली वस्तुओं पर जल्दी-जल्दी टैप करके स्कोर बनाएं!</p>
+          <button onclick="runFestivalGameEngine('${key}')" style="background: linear-gradient(135deg, #00c853, #64dd17); color: white; border: none; padding: 12px 28px; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,200,83,0.4);">
+            ▶️ गेम शुरू करें (Start Game)
+          </button>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 8px;">
+        <button id="gameShareBtn" onclick="shareGameHighScore('${key}')" style="flex: 1; background: linear-gradient(135deg, #25D366, #128C7E); color: white; border: none; padding: 10px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 13px; display: none;">
+          📱 स्कोर व्हाट्सएप पर शेयर करें
+        </button>
+      </div>
+    </div>
+  `;
+
+  modal.style.display = 'flex';
+  playFestiveChime();
+}
+
+function stopFestivalGame() {
+  if (gameActiveTimer) clearInterval(gameActiveTimer);
+  if (gameSpawnInterval) clearInterval(gameSpawnInterval);
+  gameActiveTimer = null;
+  gameSpawnInterval = null;
+}
+
+function runFestivalGameEngine(key) {
+  stopFestivalGame();
+  const preset = FESTIVAL_GAME_PRESETS[key] || FESTIVAL_GAME_PRESETS['holi'];
+  const playArea = document.getElementById('gamePlayArea');
+  const scoreEl = document.getElementById('gameCurrentScore');
+  const timerEl = document.getElementById('gameTimer');
+  const highScoreEl = document.getElementById('gameHighScore');
+  const shareBtn = document.getElementById('gameShareBtn');
+
+  if (!playArea || !scoreEl || !timerEl) return;
+
+  let currentScore = 0;
+  let timeLeft = 25;
+  const highScoreKey = `game_highscore_${key}`;
+  let highScore = parseInt(localStorage.getItem(highScoreKey) || '0', 10);
+
+  playArea.innerHTML = '';
+  scoreEl.textContent = '0';
+  timerEl.textContent = '25s';
+  if (shareBtn) shareBtn.style.display = 'none';
+
+  gameSpawnInterval = setInterval(() => {
+    if (timeLeft <= 0) return;
+    const item = document.createElement('span');
+    const symbol = preset.items[Math.floor(Math.random() * preset.items.length)];
+    item.textContent = symbol;
+    
+    const size = Math.floor(Math.random() * 16) + 32;
+    const left = Math.floor(Math.random() * 80) + 5;
+    const duration = Math.random() * 1.5 + 1.2;
+
+    item.style.cssText = `
+      position: absolute;
+      left: ${left}%;
+      bottom: -50px;
+      font-size: ${size}px;
+      cursor: pointer;
+      user-select: none;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+      animation: floatUpGame ${duration}s linear forwards;
+    `;
+
+    item.onclick = (e) => {
+      e.stopPropagation();
+      currentScore += 10;
+      scoreEl.textContent = currentScore;
+      playFestiveChime();
+
+      item.textContent = '💥';
+      item.style.transform = 'scale(1.5)';
+      item.style.opacity = '0';
+      item.style.transition = 'all 0.2s ease';
+      setTimeout(() => item.remove(), 200);
+    };
+
+    playArea.appendChild(item);
+    setTimeout(() => { if (item.parentNode) item.remove(); }, duration * 1000);
+  }, 450);
+
+  gameActiveTimer = setInterval(() => {
+    timeLeft--;
+    timerEl.textContent = `${timeLeft}s`;
+
+    if (timeLeft <= 0) {
+      stopFestivalGame();
+      let isNewRecord = false;
+      if (currentScore > highScore) {
+        highScore = currentScore;
+        localStorage.setItem(highScoreKey, highScore);
+        highScoreEl.textContent = highScore;
+        isNewRecord = true;
+      }
+
+      playArea.innerHTML = `
+        <div style="height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; background:rgba(0,0,0,0.65); border-radius:12px; padding:15px;">
+          <h4 style="font-size: 22px; color: #ffd700; margin-bottom: 6px;">🎉 समय समाप्त (Game Over)!</h4>
+          <p style="font-size: 16px; color: #fff; margin-bottom: 4px;">आपका कुल स्कोर: <strong style="color: #00e676; font-size: 20px;">${currentScore}</strong></p>
+          ${isNewRecord ? '<p style="color: #ff4081; font-weight: bold; font-size: 14px; margin-bottom: 12px;">🏆 नया हाई स्कोर रिकॉर्ड बना!</p>' : `<p style="font-size: 13px; color: #ccc; margin-bottom: 12px;">आपका हाई स्कोर: ${highScore}</p>`}
+          
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; width: 100%;">
+            <button onclick="runFestivalGameEngine('${key}')" style="background: linear-gradient(135deg, #ff9800, #e65100); color: white; border: none; padding: 10px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 13px; box-shadow: 0 4px 12px rgba(255,152,0,0.3);">
+              🔄 फिर से खेलें
+            </button>
+            <button onclick="shareGameHighScore('${key}')" style="background: linear-gradient(135deg, #25D366, #128C7E); color: white; border: none; padding: 10px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 13px; box-shadow: 0 4px 12px rgba(37,211,102,0.3);">
+              📱 व्हाट्सएप शेयर
+            </button>
+          </div>
+        </div>
+      `;
+
+      if (shareBtn) shareBtn.style.display = 'block';
+      triggerFestiveCelebration(key);
+      playTempleBell();
+    }
+  }, 1000);
+
+  if (!document.getElementById('gameAnimStyle')) {
+    const st = document.createElement('style');
+    st.id = 'gameAnimStyle';
+    st.textContent = `
+      @keyframes floatUpGame {
+        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(-310px) rotate(20deg); opacity: 0.8; }
+      }
+    `;
+    document.head.appendChild(st);
+  }
+}
+
+function shareGameHighScore(key) {
+  const target = getFestivalTarget(key);
+  const cfg = target ? target.cfg : { name: 'उत्सव' };
+  const preset = FESTIVAL_GAME_PRESETS[key] || FESTIVAL_GAME_PRESETS['holi'];
+  const highScoreKey = `game_highscore_${key}`;
+  const score = localStorage.getItem(highScoreKey) || '0';
+
+  // Read Player Name from input fields or localStorage
+  let sideVal = document.getElementById('sideNameInput') ? document.getElementById('sideNameInput').value.trim() : '';
+  let mainVal = document.getElementById('senderName') ? document.getElementById('senderName').value.trim() : '';
+  let playerName = sideVal || mainVal || localStorage.getItem('user_sender_name') || '';
+
+  if (playerName) {
+    localStorage.setItem('user_sender_name', playerName);
+  }
+
+  const nameDisplay = playerName ? `*${playerName}*` : 'मैंने';
+  const baseUrl = window.location.href.split('?')[0];
+  const shareUrl = playerName ? `${baseUrl}?from=${encodeURIComponent(playerName)}` : baseUrl;
+
+  const shareText = `🎮 ${nameDisplay} ने ${cfg.name} गेम (${preset.title}) में *${score}* अंक बनाए! 🎉\n\nक्या आप ${playerName ? nameDisplay + ' का' : 'यह'} हाई स्कोर रिकॉर्ड तोड़ सकते हैं? खेलें और अपनी शुभकामनाएं भेजें:\n👉 ${shareUrl}`;
+
+  const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+  
+  // Directly open WhatsApp link
+  window.open(waUrl, '_blank');
+
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(shareText).catch(() => {});
+  }
+  showToast(`✅ ${playerName ? playerName + ' का' : ''} स्कोर व्हाट्सएप पर शेयर हो रहा है!`);
+  playFestiveChime();
+}
+
+/**
  * Renders Left Side Panel Widgets for Desktop Screens
  */
 function renderLeftSidePanelWidgets(cfg) {
@@ -796,18 +1147,30 @@ function renderLeftSidePanelWidgets(cfg) {
       <p style="font-size: 13px; color: #555; margin-bottom: 12px; line-height: 1.4;">
         अपना नाम डालकर दोस्तों को तुरंत ${cfg.name} का विश लिंक भेजें!
       </p>
-      <input type="text" id="sideNameInput" placeholder="अपना नाम दर्ज करें" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #ccc; margin-bottom:12px; font-size:14px; outline:none;">
+      <input type="text" id="sideNameInput" placeholder="अपना नाम दर्ज करें" value="${localStorage.getItem('user_sender_name') || ''}" oninput="localStorage.setItem('user_sender_name', this.value.trim())" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #ccc; margin-bottom:12px; font-size:14px; outline:none;">
       
       <button onclick="copySideWishLink('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #25D366, #128C7E); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; box-shadow: 0 4px 10px rgba(37,211,102,0.3); margin-bottom: 8px;">
         📱 विश लिंक कॉपी करें
+      </button>
+
+      <button onclick="openFestivalGameModal('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #d32f2f, #c2185b); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(211,47,47,0.3); margin-bottom: 8px; animation: pulse 2s infinite alternate;">
+        🎮 ${cfg.name} स्पेशल गेम खेलें
       </button>
 
       <button onclick="downloadCustomCanvasCard(null, '${cfg.key}', document.getElementById('sideNameInput') ? document.getElementById('sideNameInput').value.trim() : '')" style="width:100%; background: linear-gradient(135deg, #e91e63, #ad1457); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(233,30,99,0.25); margin-bottom: 8px;">
         🎨 HD विश कार्ड डाउनलोड करें (Canvas)
       </button>
 
-      <button onclick="openQRCodeModal(window.location.href.split('?')[0] + '?from=' + encodeURIComponent(document.getElementById('sideNameInput') ? document.getElementById('sideNameInput').value.trim() || 'आप' : 'आप'))" style="width:100%; background: linear-gradient(135deg, #ff9800, #f57c00); color:white; border:none; padding:10px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(255,152,0,0.25); margin-bottom: 8px;">
+      <button onclick="spinLuckyFestivalBlessing('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #ff9800, #e65100); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(255,152,0,0.25); margin-bottom: 8px;">
+        🎡 लकी आशीर्वाद स्पिनर (Fortune Wheel)
+      </button>
+
+      <button onclick="openQRCodeModal(window.location.href.split('?')[0] + '?from=' + encodeURIComponent(document.getElementById('sideNameInput') ? document.getElementById('sideNameInput').value.trim() || 'आप' : 'आप'))" style="width:100%; background: linear-gradient(135deg, #9c27b0, #6a1b9a); color:white; border:none; padding:10px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(156,39,176,0.25); margin-bottom: 8px;">
         📱 QR कोड से शेयर करें
+      </button>
+
+      <button onclick="playTempleBell(); playFestiveChime();" style="width:100%; background: linear-gradient(135deg, #009688, #004d40); color:white; border:none; padding:10px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(0,150,136,0.25); margin-bottom: 8px;">
+        🔔 दिव्य मंदिर घंटी (Temple Bell Audio)
       </button>
 
       <button onclick="downloadFestivalCalendarEvent('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #3f51b5, #1a237e); color:white; border:none; padding:10px; border-radius:8px; font-weight:600; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(63,81,181,0.25);">
@@ -887,6 +1250,11 @@ function renderScheduleAndInfoWidgets(cfg, currentKey, isInSubfolder = false) {
           ${highlightsHTML}
         </ul>
       </div>
+
+      <button onclick="openFestivalGameModal('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #d32f2f, #c2185b); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(211,47,47,0.3); margin-bottom: 8px;">
+        🎮 ${cfg.name} स्पेशल मिनी-गेम खेलें
+      </button>
+
       <button onclick="downloadFestivalCalendarEvent('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #0288d1, #0097a7); color:white; border:none; padding:10px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(2,136,209,0.3);">
         🔔 कैलेंडर में रिमाइंडर जोड़ें (.ics)
       </button>
@@ -932,6 +1300,7 @@ function initFestivalPage(key, isInSubfolder = false) {
   renderLeftSidePanelWidgets(cfg);
   renderScheduleAndInfoWidgets(cfg, key, isInSubfolder);
   initVirtualDiyaFloatingButton(cfg);
+  initClickSplashParticles();
 
   if (cfg.bgParticles) {
     startFloatingParticles(cfg.bgParticles);
@@ -987,8 +1356,14 @@ window.copyWishLink = copyWishLink;
 window.copySideWishLink = copySideWishLink;
 window.triggerFestiveCelebration = triggerFestiveCelebration;
 window.playFestiveChime = playFestiveChime;
+window.playTempleBell = playTempleBell;
+window.spinLuckyFestivalBlessing = spinLuckyFestivalBlessing;
 window.downloadFestivalCalendarEvent = downloadFestivalCalendarEvent;
 window.spawnFloatingDiyas = spawnFloatingDiyas;
 window.downloadCustomCanvasCard = downloadCustomCanvasCard;
 window.openQRCodeModal = openQRCodeModal;
+window.openFestivalGameModal = openFestivalGameModal;
+window.stopFestivalGame = stopFestivalGame;
+window.runFestivalGameEngine = runFestivalGameEngine;
+window.shareGameHighScore = shareGameHighScore;
 

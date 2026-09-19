@@ -161,6 +161,9 @@
 
         <input type="text" id="senderName" placeholder="अपना नाम दर्ज करें (उदा. अमित)">
         <button class="btn-share" onclick="openPopup()">📱 WhatsApp पर शेयर करें</button>
+
+        <!-- Festival Share Activity Game Container -->
+        <div id="festivalShareGameContainer"></div>
       </div>
 
       <div class="mobile-only-section">
@@ -200,6 +203,7 @@
       const info = initFestivalPage('independence', true);
       targetYear = info.year;
       festivalWishes = info.cfg.wishes;
+      renderUniversalFestivalShareGameUI('independence', 'festivalShareGameContainer');
     });
 
     function changeImage(element, imageUrl) {
@@ -226,6 +230,8 @@
       document.getElementById("telegramLink").href = `https://t.me/share/url?url=${encodeURIComponent(websiteUrl)}&text=${encodeURIComponent(message)}`;
       document.getElementById("downloadLink").href = selectedImageUrl;
       document.getElementById("downloadLink").download = `swatantrata-diwas-wish-${name}.jpg`;
+
+      incrementFestivalGameShare('independence');
 
       if (navigator.share) {
         navigator.share({

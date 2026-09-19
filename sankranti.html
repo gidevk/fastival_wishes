@@ -10,6 +10,7 @@
   <meta property="og:image" id="ogImageMeta" content="sankranti1.jpg">
 
   <title>मकर संक्रांति की हार्दिक शुभकामनाएं</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -157,6 +158,9 @@
 
         <input type="text" id="senderName" placeholder="अपना नाम दर्ज करें (उदा. वरुण)">
         <button class="btn-share" onclick="openPopup()">📱 WhatsApp पर शेयर करें</button>
+
+        <!-- Festival Share Activity Game Container -->
+        <div id="festivalShareGameContainer"></div>
       </div>
 
       <!-- Mobile Fallback Sections -->
@@ -197,6 +201,7 @@
       const info = initFestivalPage('sankranti', false);
       targetYear = info.year;
       festivalWishes = info.cfg.wishes;
+      renderUniversalFestivalShareGameUI('sankranti', 'festivalShareGameContainer');
     });
 
     function changeImage(element, imageUrl) {
@@ -223,6 +228,8 @@
       document.getElementById("telegramLink").href = `https://t.me/share/url?url=${encodeURIComponent(websiteUrl)}&text=${encodeURIComponent(message)}`;
       document.getElementById("downloadLink").href = selectedImageUrl;
       document.getElementById("downloadLink").download = `makar-sankranti-wish-${name}.jpg`;
+
+      incrementFestivalGameShare('sankranti');
 
       if (navigator.share) {
         navigator.share({

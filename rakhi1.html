@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>रक्षाबंधन शुभकामनाएं</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -154,6 +155,7 @@
 
     <input type="text" id="senderName" placeholder="आपका नाम">
     <button onclick="shareOnWhatsApp()">WhatsApp पर शेयर करें</button>
+    <div id="festivalShareGameContainer"></div>
   </div>
 
   <script src="festival-core.js"></script>
@@ -164,6 +166,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       const info = initFestivalPage('rakhi', false);
       festivalWishes = info.cfg.wishes;
+      renderUniversalFestivalShareGameUI('rakhi', 'festivalShareGameContainer');
     });
 
     function changeImage(element, imageUrl) {
@@ -178,6 +181,7 @@
       const wishes = festivalWishes(name);
       const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
       const fullMessage = `${randomWish}\n${window.location.href}`;
+      incrementFestivalGameShare('rakhi');
       window.location.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(fullMessage)}`;
     }
   </script>

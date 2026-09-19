@@ -156,6 +156,9 @@
 
         <input type="text" id="senderName" placeholder="अपना नाम दर्ज करें (उदा. विजय)">
         <button class="btn-share" onclick="openPopup()">📱 WhatsApp पर शेयर करें</button>
+
+        <!-- Festival Share Activity Game Container -->
+        <div id="festivalShareGameContainer"></div>
       </div>
 
       <!-- Dussehra Claim Container for Navratri Game Winners -->
@@ -203,6 +206,8 @@
 
       // Render Dussehra Game Claim Widget for Navratri Game Winners
       renderDussehraGameClaimWidget('dussehraGameClaimContainer');
+      // Render Dussehra Share Activity Game UI
+      renderUniversalFestivalShareGameUI('dussehra', 'festivalShareGameContainer');
     });
 
     function changeImage(element, imageUrl) {
@@ -229,6 +234,8 @@
       document.getElementById("telegramLink").href = `https://t.me/share/url?url=${encodeURIComponent(websiteUrl)}&text=${encodeURIComponent(message)}`;
       document.getElementById("downloadLink").href = selectedImageUrl;
       document.getElementById("downloadLink").download = `dussehra-wish-${name}.jpg`;
+
+      incrementFestivalGameShare('dussehra');
 
       if (navigator.share) {
         navigator.share({

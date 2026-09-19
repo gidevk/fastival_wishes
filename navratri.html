@@ -307,6 +307,9 @@
         <button class="btn-share" onclick="openPopup()">📱 WhatsApp पर शेयर करें</button>
       </div>
 
+      <!-- Navratri Share Activity Game Container (Win Gift on Dussehra) -->
+      <div id="navratriShareGameContainer"></div>
+
       <!-- Mobile Fallback Sections -->
       <div class="mobile-only-section">
         <div id="festivalInfoBoxMobile" style="margin-bottom: 15px;"></div>
@@ -326,15 +329,16 @@
         <div class="wish-text" id="wishText"></div>
       </div>
       <div class="modal-links">
-        <a href="#" target="_blank" id="whatsappLink" class="link-wa">WhatsApp पर शेयर करें</a>
-        <a href="#" target="_blank" id="facebookLink" class="link-fb">Facebook पर शेयर करें</a>
-        <a href="#" target="_blank" id="telegramLink" class="link-tg">Telegram पर शेयर करें</a>
+        <a href="#" target="_blank" id="whatsappLink" class="link-wa" onclick="incrementNavratriGameShare()">WhatsApp पर शेयर करें</a>
+        <a href="#" target="_blank" id="facebookLink" class="link-fb" onclick="incrementNavratriGameShare()">Facebook पर शेयर करें</a>
+        <a href="#" target="_blank" id="telegramLink" class="link-tg" onclick="incrementNavratriGameShare()">Telegram पर शेयर करें</a>
         <a href="#" target="_blank" id="downloadLink" class="link-dl">इमेज डाउनलोड करें</a>
       </div>
       <button class="btn-close" onclick="closePopup()">बंद करें</button>
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script src="festival-core.js"></script>
   <script>
     let selectedImageUrl = 'navratri1.jpg';
@@ -345,6 +349,9 @@
       const info = initFestivalPage('navratri', false);
       targetYear = info.year;
       festivalWishes = info.cfg.wishes;
+      
+      // Render Navratri Share Activity Game UI
+      renderNavratriShareGameUI();
     });
 
     function changeImage(element, imageUrl) {
@@ -371,6 +378,9 @@
       document.getElementById("telegramLink").href = `https://t.me/share/url?url=${encodeURIComponent(websiteUrl)}&text=${encodeURIComponent(message)}`;
       document.getElementById("downloadLink").href = selectedImageUrl;
       document.getElementById("downloadLink").download = `navratri-wish-${name}.jpg`;
+
+      // Trigger share activity count towards Dussehra Gift
+      incrementNavratriGameShare();
 
       if (navigator.share) {
         navigator.share({

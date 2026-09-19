@@ -158,6 +158,9 @@
         <button class="btn-share" onclick="openPopup()">📱 WhatsApp पर शेयर करें</button>
       </div>
 
+      <!-- Dussehra Claim Container for Navratri Game Winners -->
+      <div id="dussehraGameClaimContainer"></div>
+
       <!-- Mobile Fallback Sections -->
       <div class="mobile-only-section">
         <div id="festivalInfoBoxMobile" style="margin-bottom: 15px;"></div>
@@ -186,6 +189,7 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script src="festival-core.js"></script>
   <script>
     let selectedImageUrl = 'dussehra1.jpg';
@@ -196,6 +200,9 @@
       const info = initFestivalPage('dussehra', false);
       targetYear = info.year;
       festivalWishes = info.cfg.wishes;
+
+      // Render Dussehra Game Claim Widget for Navratri Game Winners
+      renderDussehraGameClaimWidget('dussehraGameClaimContainer');
     });
 
     function changeImage(element, imageUrl) {

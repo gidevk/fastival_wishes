@@ -1405,6 +1405,440 @@ function initFestivalPage(key, isInSubfolder = false) {
   return targetInfo;
 }
 
+/* ==========================================================================
+   Navratri Share Activity Game Engine (Navratri Share & Win Dussehra Gift)
+   ========================================================================== */
+
+const NAVDURGA_BADGES = [
+  { id: 1, name: 'शैलपुत्री', day: 'पहला दिन', icon: '🌸', title: 'आरोग्य एवं शक्ति', mantra: 'ॐ देवी शैलपुत्र्यै नमः॥', giftHint: '1 शेयर पुरा - 15% दशहरा गिफ्ट मीटर' },
+  { id: 2, name: 'ब्रह्मचारिणी', day: 'दूसरा दिन', icon: '🌼', title: 'ज्ञान एवं साधना', mantra: 'ॐ देवी ब्रह्मचारिण्यै नमः॥', giftHint: '2 शेयर पुरे - 30% दशहरा गिफ्ट मीटर' },
+  { id: 3, name: 'चंद्रघंटा', day: 'तीसरा दिन', icon: '🔔', title: 'शांति एवं पराक्रम', mantra: 'ॐ देवी चंद्रघंटायै नमः॥', giftHint: '🥉 3 शेयर! सिल्वर दशहरा वाउचर अनलॉक्ड!' },
+  { id: 4, name: 'कूष्मांडा', day: 'चौथा दिन', icon: '☀️', title: 'सृष्टि एवं तेज', mantra: 'ॐ देवी कूष्मांडायै नमः॥', giftHint: '4 शेयर पुरे - 50% दशहरा गिफ्ट मीटर' },
+  { id: 5, name: 'स्कंदमाता', day: 'पांचवां दिन', icon: '🦚', title: 'वात्सल्य एवं प्रेम', mantra: 'ॐ देवी स्कंदमातायै नमः॥', giftHint: '5 शेयर पुरे - 65% दशहरा गिफ्ट मीटर' },
+  { id: 6, name: 'कात्यायनी', day: 'छठा दिन', icon: '⚔️', title: 'विजय एवं संहार', mantra: 'ॐ देवी कात्यायन्यै नमः॥', giftHint: '🥈 6 शेयर! गोल्ड दशहरा गिफ्ट बॉक्स अनलॉक्ड!' },
+  { id: 7, name: 'कालरात्रि', day: 'सातवां दिन', icon: '⚡', title: 'भयमुक्ति एवं रक्षा', mantra: 'ॐ देवी कालरात्र्यै नमः॥', giftHint: '7 शेयर पुरे - 80% दशहरा गिफ्ट मीटर' },
+  { id: 8, name: 'महागौरी', day: 'आठवां दिन', icon: '🌺', title: 'पवित्रता एवं सौभाग्य', mantra: 'ॐ देवी महागौर्यै नमः॥', giftHint: '8 शेयर पुरे - 90% दशहरा गिफ्ट मीटर' },
+  { id: 9, name: 'सिद्धिदात्री', day: 'नौवां दिन', icon: '👑', title: 'अलौकिक सिद्धि एवं विजय', mantra: 'ॐ देवी सिद्धिदात्र्यै नमः॥', giftHint: '👑 9 शेयर संपूर्ण! बम्पर रॉयल दशहरा गिफ्ट अनलॉक!' }
+];
+
+function getNavratriGameState() {
+  try {
+    const raw = localStorage.getItem('navratri_game_state_v2');
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return {
+    shares: 0,
+    claimedMilestones: [],
+    lastSpinDate: '',
+    spinCount: 1
+  };
+}
+
+function saveNavratriGameState(state) {
+  try {
+    localStorage.setItem('navratri_game_state_v2', JSON.stringify(state));
+  } catch(e) {}
+}
+
+function incrementNavratriGameShare(bonusCount = 1) {
+  const state = getNavratriGameState();
+  const oldShares = state.shares;
+  state.shares += bonusCount;
+  saveNavratriGameState(state);
+
+  // Play celebration audio and confetti
+  playFestiveChime();
+  if (typeof confetti === 'function') {
+    confetti({
+      particleCount: 80,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  }
+
+  showToast(`🎉 +${bonusCount} शेयर दर्ज! दशहरा गिफ्ट प्रोग्रेस: ${state.shares}/9`);
+
+  // Check if milestone unlocked
+  if (oldShares < 3 && state.shares >= 3) {
+    setTimeout(() => {
+      showToast('🥉 बधाई! आपने 3 शेयर पूरे कर सिल्वर दशहरा वाउचर जीता!');
+      triggerFestiveCelebration('navratri');
+    }, 1000);
+  } else if (oldShares < 6 && state.shares >= 6) {
+    setTimeout(() => {
+      showToast('🥈 अद्भुत! आपने 6 शेयर पूरे कर गोल्ड दशहरा गिफ्ट बॉक्स जीता!');
+      triggerFestiveCelebration('navratri');
+    }, 1000);
+  } else if (oldShares < 9 && state.shares >= 9) {
+    setTimeout(() => {
+      showToast('👑 जय माता दी! 9 शेयर पूरे होने पर रॉयल दशहरा महा बम्पर प्राइज जीता!');
+      triggerFestiveCelebration('navratri');
+      playTempleBell();
+    }, 1000);
+  }
+
+  // Update UI if game component is present
+  renderNavratriShareGameUI();
+}
+
+function spinNavratriGarbaWheel() {
+  const state = getNavratriGameState();
+  const todayStr = new Date().toDateString();
+
+  if (state.lastSpinDate === todayStr && state.spinCount <= 0) {
+    showToast('⚠️ आज का लकी व्हील स्पिन हो चुका है! कल फिर स्पिन करें या शेयर करके अतिरिक्त पॉइंट पाएं!');
+    return;
+  }
+
+  const btn = document.getElementById('garbaWheelSpinBtn');
+  if (btn) btn.disabled = true;
+
+  playTempleBell();
+  
+  // Audio chime spin effect
+  let spinInterval = setInterval(() => {
+    playFestiveChime();
+  }, 120);
+
+  setTimeout(() => {
+    clearInterval(spinInterval);
+    if (btn) btn.disabled = false;
+
+    state.lastSpinDate = todayStr;
+    state.spinCount = Math.max(0, state.spinCount - 1);
+
+    const outcomes = [
+      { text: '🎁 +1 बोनस दशहरा शेयर पॉइंट मिला!', addShares: 1 },
+      { text: '🌸 मां शैलपुत्री की विशेष कृपा & +1 शेयर पॉइंट!', addShares: 1 },
+      { text: '⚡ +2 बोनस दशहरा गिफ्ट शेयर पॉइंट!', addShares: 2 },
+      { text: '🌺 मां सिद्धिदात्री का दिव्य आशीर्वाद & +1 शेयर!', addShares: 1 },
+      { text: '👑 दशहरा बम्पर कूपन अनलॉक चाबी मिली! (+1 शेयर)', addShares: 1 }
+    ];
+
+    const res = outcomes[Math.floor(Math.random() * outcomes.length)];
+    state.shares += res.addShares;
+    saveNavratriGameState(state);
+
+    showToast(`🎡 लकी स्पिन परिणाम: ${res.text}`);
+    triggerFestiveCelebration('navratri');
+    renderNavratriShareGameUI();
+  }, 1800);
+}
+
+function openDurgaBadgeModal(badgeId) {
+  const badge = NAVDURGA_BADGES.find(b => b.id === badgeId);
+  if (!badge) return;
+
+  const state = getNavratriGameState();
+  const isUnlocked = state.shares >= badge.id;
+
+  let modal = document.getElementById('durgaBadgeModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'durgaBadgeModal';
+    modal.style.cssText = `
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center;
+      z-index: 2300; padding: 20px; backdrop-filter: blur(6px);
+    `;
+    document.body.appendChild(modal);
+  }
+
+  modal.innerHTML = `
+    <div style="background: linear-gradient(135deg, #fff, #fff0f5); border-radius: 20px; padding: 25px 20px; text-align: center; max-width: 380px; width: 100%; box-shadow: 0 12px 35px rgba(0,0,0,0.35); border: 2px solid ${isUnlocked ? '#ffd700' : '#ccc'}; animation: popIn 0.3s ease; position: relative;">
+      
+      <button onclick="document.getElementById('durgaBadgeModal').style.display='none'" style="position: absolute; top: 12px; right: 14px; background: #eee; border: none; font-size: 16px; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; color: #333; font-weight: bold;">✕</button>
+
+      <div style="font-size: 54px; margin-bottom: 8px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));">
+        ${badge.icon}
+      </div>
+
+      <h3 style="color: #c2185b; font-size: 20px; margin-bottom: 4px;">
+        ${badge.day}: मां ${badge.name}
+      </h3>
+      <p style="font-size: 13px; color: #880e4f; font-weight: bold; margin-bottom: 12px;">
+        ✨ ${badge.title} ✨
+      </p>
+
+      <div style="background: #fce4ec; border-radius: 12px; padding: 14px; border: 1px dashed #ec407a; margin-bottom: 15px;">
+        <p style="font-size: 14px; color: #ad1457; font-weight: bold; margin-bottom: 6px;">दिव्य मंत्र:</p>
+        <p style="font-size: 15px; color: #333; font-weight: 600;">"${badge.mantra}"</p>
+      </div>
+
+      <div style="background: ${isUnlocked ? 'linear-gradient(135deg, #e8f5e9, #c8e6c9)' : '#f5f5f5'}; padding: 12px; border-radius: 10px; margin-bottom: 15px; border: 1px solid ${isUnlocked ? '#4caf50' : '#ddd'}; font-size: 13px; color: ${isUnlocked ? '#2e7d32' : '#666'};">
+        ${isUnlocked ? `✅ <strong>कार्ड अनलॉक हो चुका है!</strong><br>${badge.giftHint}` : `🔒 <strong>कार्ड लॉक है!</strong><br>अनलॉक करने के लिए ${badge.id} विश मैसेज शेयर करें! (वर्तमान: ${state.shares}/${badge.id})`}
+      </div>
+
+      ${!isUnlocked ? `
+        <button onclick="document.getElementById('durgaBadgeModal').style.display='none'; openPopup();" style="width: 100%; background: linear-gradient(135deg, #c2185b, #e91e63); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; box-shadow: 0 4px 12px rgba(194,24,91,0.3); margin-bottom: 8px;">
+          📱 विश शेयर करके कार्ड अनलॉक करें (+1)
+        </button>
+      ` : `
+        <button onclick="triggerFestiveCelebration('navratri'); playTempleBell();" style="width: 100%; background: linear-gradient(135deg, #ff9800, #e65100); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; box-shadow: 0 4px 12px rgba(255,152,0,0.3); margin-bottom: 8px;">
+          🔔 जय माता दी घंटी बजाएं & आशीर्वाद लें
+        </button>
+      `}
+
+      <button onclick="document.getElementById('durgaBadgeModal').style.display='none'" style="width: 100%; background: #757575; color: white; border: none; padding: 9px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 13px;">
+        बंद करें
+      </button>
+    </div>
+  `;
+
+  modal.style.display = 'flex';
+  if (isUnlocked) playFestiveChime();
+}
+
+function openDussehraGiftModal() {
+  const state = getNavratriGameState();
+  const name = getActiveSenderName();
+
+  let giftTier = 'none';
+  let giftTitle = '';
+  let couponCode = '';
+  let giftBg = '';
+  let giftIcon = '';
+
+  if (state.shares >= 9) {
+    giftTier = 'mega';
+    giftTitle = '👑 रॉयल विजयादशमी महा गिफ्ट हैम्पर & VIP गोल्ड कार्ड 👑';
+    couponCode = `DUSSEHRA-MEGA-VICTORY-${Math.floor(1000 + Math.random()*9000)}`;
+    giftBg = 'linear-gradient(135deg, #fff8e1, #ffe082, #ffb300)';
+    giftIcon = '🏆';
+  } else if (state.shares >= 6) {
+    giftTier = 'gold';
+    giftTitle = '🥈 गोल्ड दशहरा उत्सव कूपन & स्पेशल गरबा पास वाउचर';
+    couponCode = `DUSSEHRA-GOLD-${Math.floor(1000 + Math.random()*9000)}`;
+    giftBg = 'linear-gradient(135deg, #fff3e0, #ffe0b2)';
+    giftIcon = '🎁';
+  } else if (state.shares >= 3) {
+    giftTier = 'silver';
+    giftTitle = '🥉 सिल्वर विजयादशमी विश पैक & रू. 250 डिस्काउंट वाउचर';
+    couponCode = `DUSSEHRA-SILVER-${Math.floor(1000 + Math.random()*9000)}`;
+    giftBg = 'linear-gradient(135deg, #f5f5f5, #e0e0e0)';
+    giftIcon = '🧧';
+  }
+
+  let modal = document.getElementById('dussehraGiftModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'dussehraGiftModal';
+    modal.style.cssText = `
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85); display: flex; justify-content: center; align-items: center;
+      z-index: 2400; padding: 20px; backdrop-filter: blur(8px);
+    `;
+    document.body.appendChild(modal);
+  }
+
+  if (giftTier === 'none') {
+    modal.innerHTML = `
+      <div style="background: white; border-radius: 20px; padding: 25px 20px; text-align: center; max-width: 380px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 2px solid #b71c1c;">
+        <div style="font-size: 48px; margin-bottom: 8px;">🎁</div>
+        <h3 style="color: #b71c1c; font-size: 18px; margin-bottom: 8px;">दशहरा गिफ्ट अनलॉक करने के लिए शेयर करें!</h3>
+        <p style="font-size: 13px; color: #555; line-height: 1.5; margin-bottom: 16px;">
+          आपने अभी तक <strong>${state.shares}/3</strong> आवश्यक शेयर पूरे किए हैं। कम से कम 3 नवरात्रि विश मैसेज शेयर करके अपना पहला 🥉 सिल्वर दशहरा उपहार अनलॉक करें!
+        </p>
+
+        <div style="background: #ffebee; padding: 12px; border-radius: 10px; font-size: 13px; color: #c62828; margin-bottom: 16px; font-weight: bold;">
+          🎯 अगला रिवॉर्ड: 3 शेयर पर दशहरा वाउचर
+        </div>
+
+        <button onclick="document.getElementById('dussehraGiftModal').style.display='none'; openPopup();" style="width: 100%; background: linear-gradient(135deg, #c2185b, #e91e63); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; box-shadow: 0 4px 12px rgba(194,24,91,0.3); margin-bottom: 8px;">
+          📱 विश शेयर करें और गिफ्ट मीटर भरें (+1)
+        </button>
+
+        <button onclick="document.getElementById('dussehraGiftModal').style.display='none'" style="width: 100%; background: #757575; color: white; border: none; padding: 9px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 13px;">
+          बंद करें
+        </button>
+      </div>
+    `;
+  } else {
+    modal.innerHTML = `
+      <div style="background: ${giftBg}; border-radius: 22px; padding: 26px 20px; text-align: center; max-width: 400px; width: 100%; box-shadow: 0 12px 40px rgba(0,0,0,0.4); border: 3px solid #ffd700; animation: popIn 0.3s ease; position: relative;">
+        
+        <div style="font-size: 56px; margin-bottom: 6px; animation: pulse 1.5s infinite alternate;">
+          ${giftIcon}
+        </div>
+
+        <h3 style="color: #b71c1c; font-size: 20px; font-weight: bold; margin-bottom: 4px;">
+          🎉 विजयादशमी विजेता गिफ्ट! 🎉
+        </h3>
+        <p style="font-size: 13px; color: #555; margin-bottom: 14px;">
+          बधाई हो <strong>${name}</strong>! आपने नवरात्रि गेम में <strong>${state.shares} शेयर</strong> पूरे करके यह गिफ्ट अनलॉक किया है!
+        </p>
+
+        <div style="background: white; border-radius: 14px; padding: 16px; border: 2px dashed #ff9800; margin-bottom: 16px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);">
+          <p style="font-size: 15px; color: #d32f2f; font-weight: bold; margin-bottom: 8px;">
+            ${giftTitle}
+          </p>
+          <div style="background: #fff8e1; border: 1px solid #ffe082; padding: 8px; border-radius: 8px; display: inline-block; font-family: monospace; font-size: 18px; font-weight: bold; color: #e65100; letter-spacing: 1px;">
+            ${couponCode}
+          </div>
+          <p style="font-size: 11px; color: #777; margin-top: 6px;">
+            (यह आपका विश कूपन कोड है - दशहरा पर क्लेम करें)
+          </p>
+        </div>
+
+        <button onclick="navigator.clipboard.writeText('${couponCode}'); showToast('✅ कूपन कोड कॉपी हो गया: ${couponCode}'); playFestiveChime();" style="width: 100%; background: linear-gradient(135deg, #ff9800, #e65100); color: white; border: none; padding: 11px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; box-shadow: 0 4px 12px rgba(255,152,0,0.3); margin-bottom: 10px;">
+          📋 कूपन कोड कॉपी करें
+        </button>
+
+        <button onclick="shareDussehraGiftProof('${name}', '${couponCode}', ${state.shares})" style="width: 100%; background: linear-gradient(135deg, #25D366, #128C7E); color: white; border: none; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; box-shadow: 0 4px 12px rgba(37,211,102,0.35); margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <span>📱</span> <span>व्हाट्सएप पर अपना गिफ्ट क्लेम कार्ड शेयर करें</span>
+        </button>
+
+        <button onclick="document.getElementById('dussehraGiftModal').style.display='none'" style="width: 100%; background: #757575; color: white; border: none; padding: 9px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 13px;">
+          बंद करें
+        </button>
+      </div>
+    `;
+    triggerFestiveCelebration('dussehra');
+    playTempleBell();
+  }
+
+  modal.style.display = 'flex';
+}
+
+function shareDussehraGiftProof(name, couponCode, shares) {
+  const baseUrl = window.location.href.split('?')[0].split('#')[0];
+  const shareText = `🎁 *${name}* ने नवरात्रि शेयर गेम खेलकर दशहरा पर जीता स्पेशल गिफ्ट! 🏹✨\n\n🏆 कुल नवरात्रि विश शेयर: ${shares}/9\n🎫 गिफ्ट वाउचर कोड: *${couponCode}*\n\nआप भी नवरात्रि विश शेयर करें और दशहरा पर जीतो बम्पर गिफ्ट:\n👉 ${baseUrl}`;
+  
+  const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+  window.open(waUrl, '_blank');
+  showToast('✅ दशहरा गिफ्ट कार्ड व्हाट्सएप पर शेयर हो रहा है!');
+}
+
+function renderNavratriShareGameUI() {
+  const container = document.getElementById('navratriShareGameContainer');
+  if (!container) return;
+
+  const state = getNavratriGameState();
+  const shares = state.shares;
+  const progressPercent = Math.min(100, Math.round((shares / 9) * 100));
+
+  const badgesHTML = NAVDURGA_BADGES.map(b => {
+    const isUnlocked = shares >= b.id;
+    return `
+      <div onclick="openDurgaBadgeModal(${b.id})" style="background: ${isUnlocked ? 'linear-gradient(135deg, #fff, #fce4ec)' : '#f5f5f5'}; border: 2px solid ${isUnlocked ? '#ff4081' : '#e0e0e0'}; border-radius: 12px; padding: 10px 6px; text-align: center; cursor: pointer; transition: all 0.25s ease; position: relative; box-shadow: ${isUnlocked ? '0 4px 12px rgba(255,64,129,0.2)' : 'none'};" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="font-size: 26px; filter: ${isUnlocked ? 'none' : 'grayscale(100%) opacity(0.5)'};">
+          ${b.icon}
+        </div>
+        <div style="font-size: 11px; font-weight: bold; color: ${isUnlocked ? '#ad1457' : '#777'}; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          ${b.name}
+        </div>
+        <div style="font-size: 9px; color: ${isUnlocked ? '#4caf50' : '#aaa'}; font-weight: bold; margin-top: 2px;">
+          ${isUnlocked ? '✅ अनलॉक्ड' : `🔒 ${b.id} शेयर`}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = `
+    <div style="background: linear-gradient(135deg, #fff0f5, #ffe4e1, #ffd1dc); border-radius: 18px; padding: 22px 18px; border: 2px solid #c2185b; box-shadow: 0 8px 25px rgba(194,24,91,0.2); margin: 20px 0; text-align: center; position: relative; overflow: hidden;">
+      
+      <!-- Banner Title -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 6px;">
+        <span style="font-size: 24px;">🔱</span>
+        <h2 style="font-size: 19px; color: #880e4f; font-weight: 800; margin: 0; line-height: 1.3;">
+          नवरात्रि शेयर करो - दशहरा पर जीतो स्पेशल गिफ्ट! 🎁
+        </h2>
+      </div>
+      <p style="font-size: 13px; color: #ad1457; margin-bottom: 16px; font-weight: 500;">
+        दोस्तों व परिवार को नवरात्रि विश भेजें, नवदुर्गा कार्ड्स अनलॉक करें और दशहरा पर पाएँ बम्पर उपहार!
+      </p>
+
+      <!-- Progress Meter -->
+      <div style="background: white; border-radius: 14px; padding: 14px; border: 1px solid #f8bbd0; margin-bottom: 18px; box-shadow: 0 4px 10px rgba(0,0,0,0.04);">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: bold; color: #880e4f; margin-bottom: 8px;">
+          <span>🎯 दशहरा गिफ्ट प्रोग्रेस: <strong style="color: #c2185b; font-size: 16px;">${shares} / 9 शेयर</strong></span>
+          <span style="color: #e91e63;">${progressPercent}% पूरा</span>
+        </div>
+
+        <div style="width: 100%; height: 16px; background: #f3e5f5; border-radius: 10px; overflow: hidden; position: relative; border: 1px solid rgba(194,24,91,0.2);">
+          <div style="width: ${progressPercent}%; height: 100%; background: linear-gradient(90deg, #ec407a, #c2185b, #ff4081); border-radius: 10px; transition: width 0.5s ease; position: relative;">
+            <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);"></div>
+          </div>
+        </div>
+
+        <!-- Milestones Badges -->
+        <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 11px; font-weight: bold;">
+          <span style="color: ${shares >= 3 ? '#2e7d32' : '#888'};">🥉 3 शेयर (सिल्वर)</span>
+          <span style="color: ${shares >= 6 ? '#2e7d32' : '#888'};">🥈 6 शेयर (गोल्ड)</span>
+          <span style="color: ${shares >= 9 ? '#2e7d32' : '#888'};">👑 9 शेयर (रॉयल बम्पर)</span>
+        </div>
+      </div>
+
+      <!-- Action Buttons Grid -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px;">
+        <button onclick="openPopup();" style="background: linear-gradient(135deg, #c2185b, #e91e63); color: white; border: none; padding: 12px 10px; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 13px; box-shadow: 0 4px 12px rgba(194,24,91,0.3); display: flex; align-items: center; justify-content: center; gap: 6px;">
+          <span>📱</span> <span>विश शेयर करें (+1)</span>
+        </button>
+
+        <button onclick="openDussehraGiftModal();" style="background: linear-gradient(135deg, #ff9800, #e65100); color: white; border: none; padding: 12px 10px; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 13px; box-shadow: 0 4px 12px rgba(255,152,0,0.3); display: flex; align-items: center; justify-content: center; gap: 6px; animation: pulse 2s infinite alternate;">
+          <span>🎁</span> <span>दशहरा गिफ्ट बॉक्स</span>
+        </button>
+      </div>
+
+      <!-- Wheel Spin Banner -->
+      <div style="background: rgba(255,255,255,0.85); border-radius: 12px; padding: 12px; border: 1px dashed #ff9800; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px;">
+        <div style="text-align: left;">
+          <h4 style="font-size: 13px; color: #e65100; margin: 0; font-weight: bold;">🎡 नवरात्रि गरबा लकी व्हील</h4>
+          <p style="font-size: 11px; color: #666; margin: 2px 0 0 0;">डेली स्पिन करें और बोनस गिफ्ट शेयर पॉइंट जीतें!</p>
+        </div>
+        <button id="garbaWheelSpinBtn" onclick="spinNavratriGarbaWheel();" style="background: linear-gradient(135deg, #ff9800, #f57c00); color: white; border: none; padding: 8px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; flex-shrink: 0; box-shadow: 0 3px 8px rgba(255,152,0,0.3);">
+          🎲 स्पिन करें
+        </button>
+      </div>
+
+      <!-- 9 Durga Cards Collection Title -->
+      <h3 style="font-size: 14px; color: #880e4f; margin-bottom: 10px; text-align: left; display: flex; align-items: center; justify-content: space-between;">
+        <span>🌸 9 नवदुर्गा आशीर्वाद कार्ड्स कलेक्शन:</span>
+        <span style="font-size: 11px; color: #ad1457;">(कार्ड पर टैप करें)</span>
+      </h3>
+
+      <!-- Badges Grid -->
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+        ${badgesHTML}
+      </div>
+
+    </div>
+  `;
+}
+
+function renderDussehraGameClaimWidget(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const state = getNavratriGameState();
+  const shares = state.shares;
+
+  container.innerHTML = `
+    <div style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-radius: 18px; padding: 22px 18px; border: 2px solid #b71c1c; box-shadow: 0 8px 25px rgba(183,28,28,0.2); margin: 20px 0; text-align: center;">
+      <div style="font-size: 32px; margin-bottom: 6px;">🏹🎁</div>
+      <h3 style="font-size: 19px; color: #b71c1c; font-weight: bold; margin-bottom: 6px;">
+        🏆 नवरात्रि गेम विजेता - दशहरा गिफ्ट क्लेम सेंटर!
+      </h3>
+      <p style="font-size: 13px; color: #555; margin-bottom: 14px; line-height: 1.4;">
+        अगर आपने नवरात्रि पर्व के दौरान विश मैसेज शेयर किए थे, तो अपना विजयादशमी गिफ्ट कार्ड यहाँ क्लेम करें!
+      </p>
+
+      <div style="background: white; border-radius: 12px; padding: 14px; border: 1px dashed #ff9800; margin-bottom: 16px;">
+        <div style="font-size: 14px; font-weight: bold; color: #e65100;">
+          📊 आपका रिकॉर्डेड नवरात्रि शेयर स्कोर: <span style="color: #b71c1c; font-size: 18px;">${shares} विश शेयर</span>
+        </div>
+        <p style="font-size: 12px; color: #777; margin-top: 4px;">
+          ${shares >= 3 ? '🎉 बधाई हो! आप दशहरा रिवॉर्ड जीतने के पात्र हैं!' : 'कम से कम 3 शेयर करने पर उपहार प्राप्त होता है।'}
+        </p>
+      </div>
+
+      <button onclick="openDussehraGiftModal();" style="width: 100%; background: linear-gradient(135deg, #b71c1c, #d32f2f); color: white; border: none; padding: 13px; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 15px; box-shadow: 0 4px 15px rgba(183,28,28,0.35); animation: pulse 2s infinite alternate;">
+        🎁 अपना दशहरा विजयादशमी गिफ्ट खोलें & क्लेम करें
+      </button>
+    </div>
+  `;
+}
+
 window.FESTIVAL_CONFIG = FESTIVAL_CONFIG;
 window.REGIONAL_WISH_PRESETS = REGIONAL_WISH_PRESETS;
 window.getFestivalTarget = getFestivalTarget;
@@ -1425,4 +1859,17 @@ window.runFestivalGameEngine = runFestivalGameEngine;
 window.shareGameHighScore = shareGameHighScore;
 window.getActiveSenderName = getActiveSenderName;
 window.syncAllNameInputs = syncAllNameInputs;
+
+// Export Navratri Share Activity Game Engine
+window.NAVDURGA_BADGES = NAVDURGA_BADGES;
+window.getNavratriGameState = getNavratriGameState;
+window.saveNavratriGameState = saveNavratriGameState;
+window.incrementNavratriGameShare = incrementNavratriGameShare;
+window.spinNavratriGarbaWheel = spinNavratriGarbaWheel;
+window.openDurgaBadgeModal = openDurgaBadgeModal;
+window.openDussehraGiftModal = openDussehraGiftModal;
+window.shareDussehraGiftProof = shareDussehraGiftProof;
+window.renderNavratriShareGameUI = renderNavratriShareGameUI;
+window.renderDussehraGameClaimWidget = renderDussehraGameClaimWidget;
+
 

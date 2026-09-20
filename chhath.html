@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="नवरात्रि की हार्दिक शुभकामनाएं">
-  <meta property="og:description" content="जय माता दी! नवरात्रि व दुर्गा पूजा की हार्दिक शुभकामनाएं भेजें!">
-  <meta property="og:url" content="https://fastival-wishes.vercel.app/navratri.html">
+  <meta property="og:title" content="छठ पूजा की हार्दिक शुभकामनाएं">
+  <meta property="og:description" content="भगवान सूर्य देव और छठी मैया की कृपा से परिपूर्ण छठ पूजा की शुभकामनाएं भेजें!">
+  <meta property="og:url" content="https://fastival-wishes.vercel.app/chhath.html">
   <meta property="og:type" content="website">
-  <meta property="og:image" id="ogImageMeta" content="navratri1.jpg">
+  <meta property="og:image" id="ogImageMeta" content="chhath1.jpg">
 
-  <title>नवरात्रि की हार्दिक शुभकामनाएं</title>
+  <title>छठ पूजा की हार्दिक शुभकामनाएं</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
     * {
@@ -19,14 +20,14 @@
     }
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #fff0f5, #ffe4e1, #ffd1dc);
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2, #ffcc80);
       min-height: 100vh;
       text-align: center;
       padding-bottom: 30px;
     }
 
     nav {
-      background: linear-gradient(90deg, #c2185b, #d81b60, #e91e63);
+      background: linear-gradient(90deg, #e65100, #f57c00, #ff9800);
       padding: 12px 10px;
       display: flex;
       justify-content: center;
@@ -55,11 +56,11 @@
       width: 100%;
       background: rgba(255, 255, 255, 0.95);
       border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(194, 24, 91, 0.25);
+      box-shadow: 0 10px 25px rgba(230, 81, 0, 0.25);
       padding: 24px 20px;
       position: relative;
       overflow: hidden;
-      border: 2px solid #c2185b;
+      border: 2px solid #ff9800;
       margin-bottom: 20px;
       backdrop-filter: blur(5px);
     }
@@ -67,19 +68,19 @@
     .glow {
       font-size: 26px;
       font-weight: bold;
-      color: #880e4f;
+      color: #e65100;
       margin: 20px 10px 10px;
-      text-shadow: 0 0 10px #f8bbd0, 0 0 20px #f48fb1;
+      text-shadow: 0 0 10px #ffe0b2, 0 0 20px #ffb74d;
       line-height: 1.3;
     }
 
     .countdown-section {
-      background: linear-gradient(135deg, #ad1457, #d81b60);
+      background: linear-gradient(135deg, #e65100, #f57c00);
       color: white;
       border-radius: 14px;
       padding: 15px 10px;
       margin: 15px 0 20px;
-      box-shadow: 0 4px 12px rgba(173, 20, 87, 0.3);
+      box-shadow: 0 4px 12px rgba(230, 81, 0, 0.3);
     }
     .countdown-title {
       font-size: 13px;
@@ -141,18 +142,18 @@
       transition: all 0.25s ease;
     }
     .image-option.selected, .image-option:hover {
-      border-color: #c2185b;
+      border-color: #e65100;
       transform: scale(1.08);
     }
 
     .share-message {
       font-size: 14px;
-      color: #880e4f;
-      background: #fce4ec;
+      color: #bf360c;
+      background: #fbe9e7;
       padding: 12px;
       border-radius: 10px;
       margin: 15px 0;
-      border-left: 4px solid #ec407a;
+      border-left: 4px solid #ff7043;
       line-height: 1.4;
     }
 
@@ -161,7 +162,7 @@
       padding: 12px 15px;
       font-size: 15px;
       border-radius: 10px;
-      border: 2px solid #c2185b;
+      border: 2px solid #ff9800;
       outline: none;
       margin-bottom: 15px;
     }
@@ -172,11 +173,11 @@
       font-size: 16px;
       font-weight: bold;
       color: white;
-      background: linear-gradient(135deg, #c2185b, #e91e63);
+      background: linear-gradient(135deg, #e65100, #f57c00);
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(194, 24, 91, 0.35);
+      box-shadow: 0 4px 12px rgba(230, 81, 0, 0.35);
       transition: all 0.3s ease;
     }
     .btn-share:hover {
@@ -206,11 +207,11 @@
       max-width: 360px;
     }
     .wish-card {
-      background: #fce4ec;
+      background: #fff3e0;
       border-radius: 12px;
       padding: 15px;
       margin: 15px 0;
-      border: 1px solid #f8bbd0;
+      border: 1px solid #ffe0b2;
     }
     .wish-card img {
       width: 100%;
@@ -240,7 +241,7 @@
     .link-wa { background: #25D366; color: white; }
     .link-fb { background: #1877F2; color: white; }
     .link-tg { background: #0088cc; color: white; }
-    .link-dl { background: #c2185b; color: white; }
+    .link-dl { background: #e65100; color: white; }
     .btn-close {
       margin-top: 10px;
       background: #757575;
@@ -264,13 +265,13 @@
     <a href="eid.html">ईद</a>
     <a href="janmashtami.html">जन्माष्टमी</a>
     <a href="ganesh.html">गणेश चतुर्थी</a>
-    <a href="navratri.html" class="active">नवरात्रि</a>
+    <a href="navratri.html">नवरात्रि</a>
     <a href="dussehra.html">दशहरा</a>
     <a href="diwali.html">दिवाली</a>
-    <a href="chhath.html">छठ पूजा</a>
+    <a href="chhath.html" class="active">छठ पूजा</a>
   </nav>
 
-  <h1 class="glow" id="festivalHeading">🔱 नवरात्रि 2026 की हार्दिक शुभकामनाएं 🔱</h1>
+  <h1 class="glow" id="festivalHeading">🌅 छठ पूजा 2026 की हार्दिक शुभकामनाएं 🌅</h1>
 
   <!-- Multi-Column Layout Wrapper -->
   <div class="page-layout-wrapper">
@@ -283,7 +284,7 @@
       <div class="container">
         
         <div class="countdown-section">
-          <div id="countdownStatus" class="countdown-title">नवरात्रि आने में बचा समय:</div>
+          <div id="countdownStatus" class="countdown-title">छठ पूजा आने में बचा समय:</div>
           <div class="countdown-wrapper">
             <div class="countdown-box"><div id="days" class="digit">00</div><div class="digit-label">दिन</div></div>
             <div class="countdown-box"><div id="hours" class="digit">00</div><div class="digit-label">घंटे</div></div>
@@ -293,24 +294,24 @@
         </div>
 
         <div class="main-img-container">
-          <img src="navratri1.jpg" alt="नवरात्रि 2026" id="navratriImage">
+          <img src="chhath1.jpg" alt="छठ पूजा 2026" id="chhathImage">
         </div>
         
         <div class="image-options">
-          <img src="navratri1.jpg" class="image-option selected" onclick="changeImage(this, 'navratri1.jpg')">
-          <img src="navratri2.jpg" class="image-option" onclick="changeImage(this, 'navratri2.jpg')">
+          <img src="chhath1.jpg" class="image-option selected" onclick="changeImage(this, 'chhath1.jpg')">
+          <img src="chhath2.jpg" class="image-option" onclick="changeImage(this, 'chhath2.jpg')">
         </div>
 
         <div class="share-message">
-          जय माता दी! मां अम्बे का आशीर्वाद अपने परिवार व दोस्तों के साथ साझा करें! 🔱🌸
+          जय छठी मैया! भगवान सूर्य देव का दिव्य आशीर्वाद एवं अर्घ्य संदेश अपने परिजनों के साथ साझा करें! 🌅🌾
         </div>
 
-        <input type="text" id="senderName" placeholder="अपना नाम दर्ज करें (उदा. पंकज)">
+        <input type="text" id="senderName" placeholder="अपना नाम दर्ज करें (उदा. आदित्य)">
         <button class="btn-share" onclick="openPopup()">📱 WhatsApp पर शेयर करें</button>
-      </div>
 
-      <!-- Navratri Share Activity Game Container (Win Gift on Dussehra) -->
-      <div id="navratriShareGameContainer"></div>
+        <!-- Festival Share Activity Game Container -->
+        <div id="festivalShareGameContainer"></div>
+      </div>
 
       <!-- Mobile Fallback Sections -->
       <div class="mobile-only-section">
@@ -327,37 +328,35 @@
   <div class="popup" id="sharePopup">
     <div class="popup-content">
       <div class="wish-card">
-        <img src="navratri1.jpg" id="shareImage" alt="नवरात्रि कार्ड">
+        <img src="chhath1.jpg" id="shareImage" alt="छठ पूजा कार्ड">
         <div class="wish-text" id="wishText"></div>
       </div>
       <div class="modal-links">
-        <a href="#" target="_blank" id="whatsappLink" class="link-wa" onclick="incrementNavratriGameShare()">WhatsApp पर शेयर करें</a>
-        <a href="#" target="_blank" id="facebookLink" class="link-fb" onclick="incrementNavratriGameShare()">Facebook पर शेयर करें</a>
-        <a href="#" target="_blank" id="telegramLink" class="link-tg" onclick="incrementNavratriGameShare()">Telegram पर शेयर करें</a>
+        <a href="#" target="_blank" id="whatsappLink" class="link-wa">WhatsApp पर शेयर करें</a>
+        <a href="#" target="_blank" id="facebookLink" class="link-fb">Facebook पर शेयर करें</a>
+        <a href="#" target="_blank" id="telegramLink" class="link-tg">Telegram पर शेयर करें</a>
         <a href="#" target="_blank" id="downloadLink" class="link-dl">इमेज डाउनलोड करें</a>
       </div>
       <button class="btn-close" onclick="closePopup()">बंद करें</button>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script src="festival-core.js"></script>
   <script>
-    let selectedImageUrl = 'navratri1.jpg';
+    let selectedImageUrl = 'chhath1.jpg';
     let targetYear = 2026;
     let festivalWishes = [];
 
     document.addEventListener('DOMContentLoaded', function() {
-      const info = initFestivalPage('navratri', false);
+      const info = initFestivalPage('chhath', false);
       targetYear = info.year;
       festivalWishes = info.cfg.wishes;
-      
-      // Render Navratri Share Activity Game UI
-      renderNavratriShareGameUI();
+
+      renderUniversalFestivalShareGameUI('chhath', 'festivalShareGameContainer');
     });
 
     function changeImage(element, imageUrl) {
-      document.getElementById('navratriImage').src = imageUrl;
+      document.getElementById('chhathImage').src = imageUrl;
       selectedImageUrl = imageUrl;
       document.querySelectorAll('.image-option').forEach(img => img.classList.remove('selected'));
       element.classList.add('selected');
@@ -379,14 +378,13 @@
       document.getElementById("facebookLink").href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(websiteUrl)}&quote=${encodeURIComponent(message)}`;
       document.getElementById("telegramLink").href = `https://t.me/share/url?url=${encodeURIComponent(websiteUrl)}&text=${encodeURIComponent(message)}`;
       document.getElementById("downloadLink").href = selectedImageUrl;
-      document.getElementById("downloadLink").download = `navratri-wish-${name}.jpg`;
+      document.getElementById("downloadLink").download = `chhath-puja-wish-${name}.jpg`;
 
-      // Trigger share activity count towards Dussehra Gift
-      incrementNavratriGameShare();
+      incrementFestivalGameShare('chhath');
 
       if (navigator.share) {
         navigator.share({
-          title: `नवरात्रि ${targetYear} शुभकामनाएं`,
+          title: `छठ पूजा ${targetYear} शुभकामनाएं`,
           text: fullText,
           url: websiteUrl
         }).catch(err => {

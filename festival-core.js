@@ -29,7 +29,9 @@ const FESTIVAL_CONFIG = {
     wishes: (name) => [
       `${getRemainingDaysText('rakhi')}\n🌸 रक्षाबंधन की हार्दिक शुभकामनाएं! यह त्योहार आपके जीवन में ढेरों खुशियाँ और सफलता लाए,\n\nआपका/आपकी ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `,
       `${getRemainingDaysText('rakhi')}\n🌸 प्यारी बहना / प्यारे भैया, रक्षाबंधन की शुभकामनाएं! भगवान आपके हर सपने को पूरा करे,\n\nआपका/आपकी ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `,
-      `${getRemainingDaysText('rakhi')}\n🎀 राखी के इस पावन अवसर पर आपके लिए ढेरों दुआएँ और स्नेह,\n\nआपका/आपकी ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `
+      `${getRemainingDaysText('rakhi')}\n🎀 राखी के इस पावन अवसर पर आपके लिए ढेरों दुआएँ और स्नेह,\n\nआपका/आपकी ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `,
+      `${getRemainingDaysText('rakhi')}\n💖 रेशम के धागों से बंधा यह प्यार का बंधन हमेशा महकता रहे। हैप्पी रक्षाबंधन!\n\nआपका/आपकी ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `,
+      `${getRemainingDaysText('rakhi')}\n🌼 जीवन में खुशियों की बहार आए, भाई-बहन का यह रिश्ता सदा मुस्कुराए। शुभ रक्षाबंधन!\n\nआपका/आपकी ${name}\n\nशुभकामनाएं भेजने के लिए खोलें: `
     ]
   },
   independence: {
@@ -45,7 +47,10 @@ const FESTIVAL_CONFIG = {
     highlights: ['आन-बान-शान से फहराता तिरंगा 🇮🇳', 'वीर शहीदों के बलिदान को सलाम 🙏', 'एकता और अखंडता का महाउत्सव 🤝'],
     wishes: (name) => [
       `${getRemainingDaysText('independence')}\n🇮🇳 स्वतंत्रता दिवस की हार्दिक शुभकामनाएं! \nहमारे वीर शहीदों को नमन, तिरंगे को सलाम।\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`,
-      `${getRemainingDaysText('independence')}\n🇮🇳 गर्व से कहो हम भारतीय हैं! \nस्वतंत्रता दिवस की ढेरों शुभकामनाएं।\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`
+      `${getRemainingDaysText('independence')}\n🇮🇳 गर्व से कहो हम भारतीय हैं! \nस्वतंत्रता दिवस की ढेरों शुभकामनाएं।\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('independence')}\n🕊️ विजय विश्व तिरंगा प्यारा, झंडा ऊंचा रहे हमारा! स्वतंत्रता दिवस की बहुत-बहुत बधाई।\n\n- ${name} 🇮🇳\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('independence')}\n🧡 भारत माता की जय! स्वतंत्रता दिवस के इस पावन पर्व पर देश की प्रगति और खुशहाली की कामना।\n\n- ${name} 💚\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('independence')}\n⭐ देश प्रेम की भावना दिल में जगाएं, स्वतंत्रता दिवस का यह राष्ट्रीय पर्व खुशी से मनाएं!\n\n- ${name} 🇮🇳\nशुभकामनाएं भेजने के लिए खोलें:`
     ]
   },
   sankranti: {
@@ -56,12 +61,15 @@ const FESTIVAL_CONFIG = {
     bgParticles: ['🪁', '☀️', '✨', '🍬', '🌾', '🟡'],
     fixed: [0, 14], // Jan 14
     defaultImage: 'sankranti1.jpg',
-    images: ['sankranti1.jpg'],
+    images: ['sankranti1.jpg', 'sankranti2.jpg'],
     significance: 'मकर संक्रांति सूर्य देव के उत्तरायण होने का पावन पर्व है। यह त्योहार फसलों की कटाई, पतंगबाजी और तिल-गुड़ की मिठास के साथ पूरे भारत में बड़े ही उत्साह से मनाया जाता है।',
     highlights: ['आसमान में रंग-बिरंगी पतंगबाजी 🪁', 'तिल-गुड़ की मिठास और भाईचारा 🍬', 'सूर्य देव का उत्तरायण आगमन ☀️'],
     wishes: (name) => [
       `${getRemainingDaysText('sankranti')}\n🪁 मकर संक्रांति की हार्दिक शुभकामनाएं! पतंग की तरह आपकी सफलता भी ऊंचाइयों को छुए।\n\n- ${name} ☀️\nशुभकामनाएं भेजने के लिए खोलें:`,
-      `${getRemainingDaysText('sankranti')}\n🍬 मीठे तिल-गुड़ की तरह आपके जीवन में हमेशा मिठास बनी रहे। हैप्पी संक्रांति!\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`
+      `${getRemainingDaysText('sankranti')}\n🍬 मीठे तिल-गुड़ की तरह आपके जीवन में हमेशा मिठास बनी रहे। हैप्पी संक्रांति!\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('sankranti')}\n☀️ सूर्य देव के उत्तरायण आगमन पर आपको आरोग्य, सुख और समृद्धि की प्राप्ति हो। शुभ संक्रांति!\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('sankranti')}\n🌾 कटी पतंग की तरह ग़म उड़ जाएं, और खुशियों का नया सवेरा आए। मकर संक्रांति मुबारक!\n\n- ${name} 🪁\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('sankranti')}\n🟡 तिलकुट और गुड़ की मिठास के साथ, आपको मकर संक्रांति पर्व की ढेरों शुभकामनाएं!\n\n- ${name} ❤️\nशुभकामनाएं भेजने के लिए खोलें:`
     ]
   },
   shivratri: {
@@ -84,12 +92,15 @@ const FESTIVAL_CONFIG = {
       2035: [2, 8]     // Mar 8
     },
     defaultImage: 'shivratri1.jpg',
-    images: ['shivratri1.jpg'],
+    images: ['shivratri1.jpg', 'shivratri2.jpg'],
     significance: 'महाशिवरात्रि देवाधिदेव महादेव शिव शंभू और माता पार्वती के दिव्य मिलन का महापर्व है। इस दिन जलाभिषेक और ॐ नमः शिवाय का जाप करने से मनोकामनाएं पूर्ण होती हैं।',
     highlights: ['हर-हर महादेव का जयघोष 🔱', 'शिवलिंग का पवित्र जलाभिषेक 🌿', 'भक्ति, ध्यान और आध्यात्मिक शांति 💙'],
     wishes: (name) => [
       `${getRemainingDaysText('shivratri')}\n🔱 महाशिवरात्रि की हार्दिक शुभकामनाएं! भगवान भोलेनाथ आपकी हर मनोकामना पूरी करें। हर हर महादेव!\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`,
-      `${getRemainingDaysText('shivratri')}\n🌿 ॐ नमः शिवाय! शिव शंभू का आशीर्वाद आप पर हमेशा बना रहे। शुभ महाशिवरात्रि!\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`
+      `${getRemainingDaysText('shivratri')}\n🌿 ॐ नमः शिवाय! शिव शंभू का आशीर्वाद आप पर हमेशा बना रहे। शुभ महाशिवरात्रि!\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('shivratri')}\n🔔 महाकाल की कृपा से आपके जीवन से सभी कष्ट दूर हों और भक्ति की शक्ति मिले। जय शिव शंभू!\n\n- ${name} 🔱\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('shivratri')}\n🌙 शिव की भक्ति, शिव की शक्ति! महाशिवरात्रि के पावन अवसर पर आपको ढेरों शुभकामनाएं।\n\n- ${name} 💙\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('shivratri')}\n💙 न नशा धन का, न चिंता पद की! बस शंभू तेरे चरणों की भक्ति की ललक हो। शुभ शिवरात्रि!\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`
     ]
   },
   holi: {
@@ -112,12 +123,15 @@ const FESTIVAL_CONFIG = {
       2035: [2, 24]    // Mar 24
     },
     defaultImage: 'holi1.jpg',
-    images: ['holi1.jpg', 'holi2.jpg'],
+    images: ['holi1.jpg', 'holi2.jpg', 'holi3.jpg'],
     significance: 'होली रंगों, आपसी भाईचारे और उल्लास का त्योहार है। यह पर्व बुराई पर अच्छाई की जीत और वसंत ऋतु के रंगीन आगमन का उत्सव मनाता है।',
     highlights: ['गुलाल और रंगों की बौछार 🎨', 'आपसी भाईचारा और मिठास 🍬', 'बुराई पर सच्चाई की विजय 🌈'],
     wishes: (name) => [
       `${getRemainingDaysText('holi')}\n🎨 रंग, उमंग और खुशियों के इस पावन पर्व की हार्दिक शुभकामनाएं! हैप्पी होली!\n\n- ${name} 🌈\nशुभकामनाएं भेजने के लिए खोलें:`,
-      `${getRemainingDaysText('holi')}\n🌈 रंगों का यह त्योहार आपके जीवन में नई खुशियां और उमंग लेकर आए। होली मुबारक!\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`
+      `${getRemainingDaysText('holi')}\n🌈 रंगों का यह त्योहार आपके जीवन में नई खुशियां और उमंग लेकर आए। होली मुबारक!\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('holi')}\n🔴 लाल, पीले और गुलाबी गुलाल से सजे आपका जीवन! आपको और आपके परिवार को होली की बहुत-बहुत बधाई।\n\n- ${name} 🎨\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('holi')}\n🍬 गुझिया की मिठास और रंगों के उल्लास के साथ, आपको प्यार भरी होली की शुभकामनाएं!\n\n- ${name} 💛\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('holi')}\n✨ प्यार के रंग से भरो अपनी दुनिया! होली का यह पावन पर्व आपके लिए सुख-समृद्धि लाए।\n\n- ${name} 🌺\nशुभकामनाएं भेजने के लिए खोलें:`
     ]
   },
   eid: {
@@ -140,12 +154,15 @@ const FESTIVAL_CONFIG = {
       2035: [11, 12]   // Dec 12
     },
     defaultImage: 'eid1.jpg',
-    images: ['eid1.jpg'],
+    images: ['eid1.jpg', 'eid2.jpg'],
     significance: 'ईद-उल-फ़ित्र मोहब्बत, भाईचारे, दुआओं और सब्र की मिठास का पावन त्योहार है। रमजान के मुकद्दस महीने के बाद ईद की खुशियां हर दिल को आपस में जोड़ती हैं।',
     highlights: ['इबादत, दुआएं और खुशियां 🤲', 'ईदी और मीठी सेवइयों की मिठास 🌙', 'आपसी प्यार और अद्वैत भाईचारा ✨'],
     wishes: (name) => [
       `${getRemainingDaysText('eid')}\n🌙 ईद मुबारक! अल्लाह आपकी हर दुआ कुबूल फरमाए और जिंदगी में खुशियां भर दे।\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`,
-      `${getRemainingDaysText('eid')}\n✨ आपको और आपके अहल-ए-खाना को ईद की दिली मुबारकबाद!\n\n- ${name} 🌙\nशुभकामनाएं भेजने के लिए खोलें:`
+      `${getRemainingDaysText('eid')}\n✨ आपको और आपके अहल-ए-खाना को ईद की दिली मुबारकबाद!\n\n- ${name} 🌙\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('eid')}\n🤲 ईद का चांद आपके जीवन में रोशनी, सुकून और खुशहाली लेकर आए। ईद मुबारक!\n\n- ${name} 💚\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('eid')}\n🕌 मीठी सेवाइयों की मिठास की तरह आपकी जिंदगी में हमेशा मिठास बनी रहे। ईद-उल-फ़ित्र मुबारक!\n\n- ${name} ⭐\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('eid')}\n⭐ अल्लाह ताला आपकी सेहत, तरक्की और खुशहाली की हर दुआ कबूल करे। ईद मुबारक!\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`
     ]
   },
   janmashtami: {
@@ -168,12 +185,15 @@ const FESTIVAL_CONFIG = {
       2035: [7, 26]    // Aug 26
     },
     defaultImage: 'janmashtami1.jpg',
-    images: ['janmashtami1.jpg'],
+    images: ['janmashtami1.jpg', 'janmashtami2.jpg'],
     significance: 'कृष्ण जन्माष्टमी भगवान श्री कृष्ण के जन्मोत्सव का परम पावन पर्व है। इस दिन मटकी फोड़ प्रतियोगिता (दही हांडी) और बालगोपाल के झूले की मनमोहक छटा दर्शनीय होती है।',
     highlights: ['बालगोपाल श्री कृष्ण का जन्मोत्सव 🪈', 'दही-हांडी और मटकी फोड़ की उमंग 🍯', 'मोरपंख और बंसी की मधुर तान 🦚'],
     wishes: (name) => [
       `${getRemainingDaysText('janmashtami')}\n🪈 कृष्ण जन्माष्टमी की हार्दिक शुभकामनाएं! नटखट कान्हा आपके जीवन में खुशियां और प्रेम भर दें।\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`,
-      `${getRemainingDaysText('janmashtami')}\n🦚 जय श्री कृष्णा! भगवान कृष्ण का आशीर्वाद आपके और आपके परिवार पर सदा बना रहे।\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`
+      `${getRemainingDaysText('janmashtami')}\n🦚 जय श्री कृष्णा! भगवान कृष्ण का आशीर्वाद आपके और आपके परिवार पर सदा बना रहे।\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('janmashtami')}\n🍯 माखन चोर नंदलाला आपके जीवन में मिठास और आनंद घोल दें। जन्माष्टमी की बहुत-बहुत बधाई!\n\n- ${name} 🪈\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('janmashtami')}\n🌸 बंसी की धुन पर झूमे जग सारा, गोकुल का कान्हा है सबसे प्यारा। शुभ जन्माष्टमी!\n\n- ${name} 💫\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('janmashtami')}\n✨ हरे कृष्णा हरे रामा! श्री कृष्ण जन्माष्टमी पर सुख, शांति और समृद्धि की मंगलकामनाएं।\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`
     ]
   },
   ganesh: {
@@ -196,12 +216,15 @@ const FESTIVAL_CONFIG = {
       2035: [8, 6]     // Sep 6
     },
     defaultImage: 'ganesh1.jpg',
-    images: ['ganesh1.jpg'],
+    images: ['ganesh1.jpg', 'ganesh2.jpg'],
     significance: 'गणेश चतुर्थी बुद्धि, रिद्धि-सिद्धि और विघ्नहर्ता भगवान श्री गणेश जी के जन्मोत्सव का पावन पर्व है। बप्पा का आगमन हर घर में खुशहाली, सुख-समृद्धि और सफलता का नया सवेरा लाता है।',
     highlights: ['विघ्नहर्ता गणपति बप्पा का आगमन 🐘', 'मोदक और लड्डू का महाप्रसाद 🍬', 'रिद्धि-सिद्धि और सुख-समृद्धि 🌟'],
     wishes: (name) => [
       `${getRemainingDaysText('ganesh')}\n🐘 गणेश चतुर्थी की हार्दिक शुभकामनाएं! बप्पा आपके जीवन में सुख, समृद्धि और रिद्धि-सिद्धि लाएं।\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`,
-      `${getRemainingDaysText('ganesh')}\n🌸 गणपति बप्पा मोरया! गणेश चतुर्थी की बहुत-बहुत बधाई।\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`
+      `${getRemainingDaysText('ganesh')}\n🌸 गणपति बप्पा मोरया! गणेश चतुर्थी की बहुत-बहुत बधाई।\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('ganesh')}\n🌺 विघ्नहर्ता गणेश आपके सभी कष्ट दूर करें और नई सफलताओं के द्वार खोलें। शुभ गणेश उत्सव!\n\n- ${name} 🐘\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('ganesh')}\n🍬 मोदक की मिठास और बप्पा का आशीर्वाद सदा आपके साथ रहे। हैप्पी गणेश चतुर्थी!\n\n- ${name} 🌟\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('ganesh')}\n✨ देवों में प्रथम पूज्य श्री गणेश जी आपके घर में सुख-शांति और आनंद का वास करें।\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`
     ]
   },
   navratri: {
@@ -224,12 +247,15 @@ const FESTIVAL_CONFIG = {
       2035: [9, 1]     // Oct 1
     },
     defaultImage: 'navratri1.jpg',
-    images: ['navratri1.jpg'],
+    images: ['navratri1.jpg', 'navratri2.jpg'],
     significance: 'नवरात्रि मां भगवती की शक्ति, भक्ति और आराधना का नौ दिवसीय महाउत्सव है। नवदुर्गा के नौ स्वरूपों की उपासना से जीवन में सुख, शांति, और सकारात्मक ऊर्जा का संचार होता है।',
     highlights: ['शक्ति स्वरूपा मां दुर्गा की आराधना 🔱', 'गरबा और डांडिया की उमंग 💃', 'सकारात्मक ऊर्जा और भक्ति 🌸'],
     wishes: (name) => [
       `${getRemainingDaysText('navratri')}\n🔱 शुभ नवरात्रि! मां दुर्गा आपके जीवन से सभी दुखों का नाश करें और सुख-शांति प्रदान करें।\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`,
-      `${getRemainingDaysText('navratri')}\n✨ नवरात्रि के इस पावन पर्व की हार्दिक शुभकामनाएं! जय माता दी!\n\n- ${name} 🌸\nशुभकामनाएं भेजने के लिए खोलें:`
+      `${getRemainingDaysText('navratri')}\n✨ नवरात्रि के इस पावन पर्व की हार्दिक शुभकामनाएं! जय माता दी!\n\n- ${name} 🌸\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('navratri')}\n💃 गरबा की धुन और नवदुर्गा के आशीर्वाद से आपका जीवन जगमगा उठे। शुभ नवरात्रि!\n\n- ${name} 🔱\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('navratri')}\n🌸 मां अंबे की असीम कृपा आप और आपके पूरे परिवार पर सदा बनी रहे। जय भवानी!\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('navratri')}\n🏵️ शक्ति, भक्ति और समृद्धि के पावन पर्व नवरात्रि की अनंत मंगलकामनाएं!\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`
     ]
   },
   dussehra: {
@@ -252,12 +278,15 @@ const FESTIVAL_CONFIG = {
       2035: [9, 11]    // Oct 11
     },
     defaultImage: 'dussehra1.jpg',
-    images: ['dussehra1.jpg'],
+    images: ['dussehra1.jpg', 'dussehra2.jpg'],
     significance: 'दशहरा (विजयादशमी) अधर्म पर धर्म और असत्य पर सत्य की विजय का महान पर्व है। इस दिन भगवान श्री राम ने रावण का वध कर धर्म की पुनर्स्थापना की थी।',
     highlights: ['अधर्म पर धर्म की विजय 🏹', 'सत्य और अच्छाई का प्रतीक ✨', 'रावण दहन और आतिशबाजी 🎆'],
     wishes: (name) => [
       `${getRemainingDaysText('dussehra')}\n🏹 विजयादशमी (दशहरा) की हार्दिक शुभकामनाएं! आपके जीवन से सभी बुराइयों का नाश हो और विजय मिले।\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`,
-      `${getRemainingDaysText('dussehra')}\n✨ सत्य और धर्म की जीत का यह पावन पर्व आपके जीवन में नई खुशियां लाए। शुभ दशहरा!\n\n- ${name} 🌟\nशुभकामनाएं भेजने के लिए खोलें:`
+      `${getRemainingDaysText('dussehra')}\n✨ सत्य और धर्म की जीत का यह पावन पर्व आपके जीवन में नई खुशियां लाए। शुभ दशहरा!\n\n- ${name} 🌟\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('dussehra')}\n🎆 असत्य पर सत्य की विजय के पर्व विजयादशमी की आपको ढेरों शुभकामनाएं। जय श्री राम!\n\n- ${name} 🏹\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('dussehra')}\n👑 बुराई का नाश हो और अच्छाई का सवेरा हो, दशहरा का यह पर्व आपके जीवन में खुशहाली लाए।\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('dussehra')}\n🌟 हर पथ पर आपको विजय मिले और हर कदम पर सफलता का परचम फहराए। शुभ दशहरा!\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`
     ]
   },
   diwali: {
@@ -280,12 +309,46 @@ const FESTIVAL_CONFIG = {
       2035: [9, 30]    // Oct 30
     },
     defaultImage: 'diwali1.jpg',
-    images: ['diwali1.jpg', 'diwali2.jpg'],
+    images: ['diwali1.jpg', 'diwali2.jpg', 'diwali3.jpg'],
     significance: 'दीपावली रोशनी, खुशियों और समृद्धि का सबसे बड़ा त्योहार है। इस दिन भगवान श्री राम 14 वर्ष के वनवास के बाद अयोध्या लौटे थे। मां लक्ष्मी और भगवान गणेश जी की कृपा से हर घर में प्रकाश फैलता है।',
     highlights: ['दीपों का जगमगाता प्रकाश 🪔', 'मां लक्ष्मी एवं गणेश पूजन 🪙', 'सुख, शांति और समृद्धि 🌟'],
     wishes: (name) => [
       `${getRemainingDaysText('diwali')}\n🪔 दीपों के इस पावन पर्व पर आपके घर में सुख, समृद्धि और खुशियों का प्रकाश फैले। हैप्पी दिवाली!\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`,
-      `${getRemainingDaysText('diwali')}\n✨ दीपावली की हार्दिक शुभकामनाएं! मां लक्ष्मी का आशीर्वाद आप पर हमेशा बना रहे।\n\n- ${name} 🪔\nशुभकामनाएं भेजने के लिए खोलें:`
+      `${getRemainingDaysText('diwali')}\n✨ दीपावली की हार्दिक शुभकामनाएं! मां लक्ष्मी का आशीर्वाद आप पर हमेशा बना रहे।\n\n- ${name} 🪔\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('diwali')}\n🎆 जगमगाते दीपकों की रोशनी आपके जीवन से अज्ञान और अंधेरे को दूर करे। शुभ दीपावली!\n\n- ${name} 💛\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('diwali')}\n🪙 मां लक्ष्मी का आगमन आपके घर हो, और धन-धान्य से आपकी झोली भर जाए। शुभ दिवाली!\n\n- ${name} 🪔\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('diwali')}\n🌟 सुख, शांति, समृद्धि और उत्तम स्वास्थ्य से परिपूर्ण हो आपकी दीपावली! हार्दिक मंगलकामनाएं।\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`
+    ]
+  },
+  chhath: {
+    key: 'chhath',
+    name: 'छठ पूजा',
+    englishName: 'Chhath Puja',
+    emoji: '🌅',
+    bgParticles: ['🌅', '☀️', '🌾', '✨', '🌊', '💛'],
+    dates: {
+      2025: [9, 26],   // Oct 26
+      2026: [10, 14],  // Nov 14
+      2027: [10, 4],   // Nov 4
+      2028: [9, 23],   // Oct 23
+      2029: [10, 11],  // Nov 11
+      2030: [10, 1],   // Nov 1
+      2031: [10, 20],  // Nov 20
+      2032: [10, 8],   // Nov 8
+      2033: [9, 28],   // Oct 28
+      2034: [10, 16],  // Nov 16
+      2035: [10, 5]    // Nov 5
+    },
+    defaultImage: 'chhath1.jpg',
+    images: ['chhath1.jpg', 'chhath2.jpg'],
+    significance: 'छठ पूजा भगवान सूर्य देव और छठी मैया को समर्पित एक पावन महालोकपर्व है। इसमें 36 घंटे के निर्जला व्रत के साथ पवित्र नदी या पोखर में संध्या और उषा काल में सूर्य देव को अर्घ्य समर्पित कर आरोग्य, सुख-समृद्धि और संतान सुख का वरदान मांगा जाता है।',
+    highlights: ['संध्या एवं उषा अर्घ्य 🌅', 'ठेकुआ प्रसाद एवं सूप पूजन 🌾', 'सच्ची भक्ति और पवित्रता का लोकपर्व ☀️'],
+    wishes: (name) => [
+      `${getRemainingDaysText('chhath')}\n🌅 छठ पूजा की हार्दिक शुभकामनाएं! भगवान सूर्य देव और छठी मैया का आशीर्वाद आपके जीवन में सुख, शांति और आरोग्य लाए।\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('chhath')}\n🌾 छठ पूजा के महालोकपर्व की बहुत-बहुत बधाई! छठी मैया आपकी हर मनोकामना पूरी करें।\n\n- ${name} ✨\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('chhath')}\n☀️ उगते और डूबते सूर्य देव को नमन! छठ पर्व आपके जीवन में प्रकाश और आरोग्य भर दे। जय छठी मैया!\n\n- ${name} 🌅\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('chhath')}\n🌊 पवित्र घाटों की छटा और ठेकुआ की मिठास के साथ छठ पूजा की अनंत शुभकामनाएं!\n\n- ${name} 🌾\nशुभकामनाएं भेजने के लिए खोलें:`,
+      `${getRemainingDaysText('chhath')}\n✨ छठी मैया का वरदान मिले, आपके घर-आंगन में सुख-समृद्धि और खुशियाँ खिले। शुभ छठ पूजा!\n\n- ${name} 🙏\nशुभकामनाएं भेजने के लिए खोलें:`
     ]
   }
 };
@@ -547,6 +610,10 @@ function injectResponsiveLayoutStyles() {
       .mobile-only-section {
         display: block !important;
       }
+    }
+    @keyframes gameHighlightPulse {
+      0% { transform: scale(1); box-shadow: 0 0 12px rgba(255, 23, 68, 0.75), 0 0 20px rgba(255, 145, 0, 0.5); }
+      100% { transform: scale(1.04); box-shadow: 0 0 22px rgba(255, 23, 68, 0.95), 0 0 35px rgba(255, 145, 0, 0.85), 0 0 45px rgba(255, 234, 0, 0.7); }
     }
   `;
   document.head.appendChild(style);
@@ -975,6 +1042,41 @@ const FESTIVAL_GAME_PRESETS = {
 let gameActiveTimer = null;
 let gameSpawnInterval = null;
 
+function toggleFestivalGameFullscreen() {
+  const card = document.getElementById('festivalGameModalCard');
+  const playArea = document.getElementById('gamePlayArea');
+  const btn = document.getElementById('gameFullscreenBtn');
+  if (!card) return;
+
+  const isFullscreen = card.classList.contains('fullscreen-game-mode');
+  if (isFullscreen) {
+    card.classList.remove('fullscreen-game-mode');
+    card.style.maxWidth = '500px';
+    card.style.width = '92vw';
+    card.style.height = 'auto';
+    card.style.minHeight = '440px';
+    card.style.maxHeight = '90vh';
+    if (playArea) {
+      playArea.style.height = '320px';
+      playArea.style.minHeight = '300px';
+      playArea.style.flex = '1';
+    }
+    if (btn) btn.innerHTML = '⛶ फ़ुल स्क्रीन (Fullscreen)';
+  } else {
+    card.classList.add('fullscreen-game-mode');
+    card.style.maxWidth = '96vw';
+    card.style.width = '96vw';
+    card.style.height = '92vh';
+    card.style.maxHeight = '92vh';
+    if (playArea) {
+      playArea.style.height = 'calc(92vh - 165px)';
+      playArea.style.minHeight = '400px';
+      playArea.style.flex = '1';
+    }
+    if (btn) btn.innerHTML = '🗗 सामान्य स्क्रीन (Normal View)';
+  }
+}
+
 function openFestivalGameModal(key) {
   const target = getFestivalTarget(key);
   const cfg = target ? target.cfg : { name: 'उत्सव', key: 'holi' };
@@ -989,30 +1091,37 @@ function openFestivalGameModal(key) {
     modal.style.cssText = `
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
       background: rgba(0,0,0,0.85); display: flex; justify-content: center; align-items: center;
-      z-index: 2200; padding: 15px; backdrop-filter: blur(8px);
+      z-index: 2200; padding: 12px; backdrop-filter: blur(8px);
     `;
     document.body.appendChild(modal);
   }
 
   modal.innerHTML = `
-    <div style="background: ${preset.bg}; border-radius: 20px; padding: 20px; text-align: center; max-width: 440px; width: 100%; box-shadow: 0 12px 35px rgba(0,0,0,0.5); border: 2px solid #ffd700; color: white; position: relative; overflow: hidden; animation: popIn 0.3s ease;">
+    <div id="festivalGameModalCard" style="background: ${preset.bg}; border-radius: 20px; padding: 18px; text-align: center; max-width: 500px; width: 92vw; min-height: 440px; box-shadow: 0 12px 35px rgba(0,0,0,0.5); border: 2px solid #ffd700; color: white; position: relative; overflow: hidden; animation: popIn 0.3s ease; display: flex; flex-direction: column; transition: all 0.3s ease; resize: both;">
       
-      <button onclick="stopFestivalGame(); document.getElementById('festivalGameModal').style.display='none';" style="position: absolute; top: 12px; right: 14px; background: rgba(255,255,255,0.2); color: white; border: none; font-size: 18px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold;">✕</button>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <h3 style="font-size: 17px; margin: 0; color: #ffd700; display: flex; align-items: center; gap: 6px;">
+          <span>🎮</span> <span>${preset.title}</span>
+        </h3>
+        <div style="display: flex; gap: 6px; align-items: center;">
+          <button id="gameFullscreenBtn" onclick="toggleFestivalGameFullscreen()" style="background: rgba(255,255,255,0.2); color: #ffd700; border: 1px solid rgba(255,215,0,0.5); font-size: 12px; padding: 5px 12px; border-radius: 15px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+            ⛶ फ़ुल स्क्रीन (Fullscreen)
+          </button>
+          <button onclick="stopFestivalGame(); document.getElementById('festivalGameModal').style.display='none';" style="background: rgba(255,255,255,0.2); color: white; border: none; font-size: 18px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold;">✕</button>
+        </div>
+      </div>
 
-      <h3 style="font-size: 18px; margin-bottom: 4px; color: #ffd700; display: flex; align-items: center; justify-content: center; gap: 6px;">
-        <span>🎮</span> <span>${preset.title}</span>
-      </h3>
-      <p style="font-size: 12px; color: rgba(255,255,255,0.85); margin-bottom: 12px;">${preset.targetText} (25 सेकंड का पावन चैलेंज!)</p>
+      <p style="font-size: 12px; color: rgba(255,255,255,0.85); margin-bottom: 10px;">${preset.targetText} (25 सेकंड का पावन चैलेंज!)</p>
 
-      <div style="display: flex; justify-content: space-between; background: rgba(0,0,0,0.35); padding: 8px 14px; border-radius: 12px; margin-bottom: 12px; font-size: 13px; font-weight: bold; border: 1px solid rgba(255,215,0,0.3);">
+      <div style="display: flex; justify-content: space-between; background: rgba(0,0,0,0.35); padding: 8px 14px; border-radius: 12px; margin-bottom: 10px; font-size: 13px; font-weight: bold; border: 1px solid rgba(255,215,0,0.3);">
         <div>🎯 स्कोर: <span id="gameCurrentScore" style="color: #00e676; font-size: 16px;">0</span></div>
         <div>⏱️ समय: <span id="gameTimer" style="color: #ffea00; font-size: 16px;">25s</span></div>
         <div>🏆 बेस्ट: <span id="gameHighScore" style="color: #ff4081; font-size: 16px;">${savedHighScore}</span></div>
       </div>
 
-      <div id="gamePlayArea" style="height: 260px; background: rgba(0,0,0,0.25); border-radius: 14px; border: 2px dashed rgba(255,215,0,0.4); position: relative; overflow: hidden; margin-bottom: 12px; touch-action: manipulation;">
-        <div id="gameStartOverlay" style="position: absolute; top:0; left:0; width:100%; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; background: rgba(0,0,0,0.5); border-radius:12px; padding:20px;">
-          <p style="font-size: 14px; margin-bottom: 14px; line-height: 1.5;">स्क्रीन पर आने वाली वस्तुओं पर जल्दी-जल्दी टैप करके स्कोर बनाएं!</p>
+      <div id="gamePlayArea" style="height: 320px; min-height: 300px; flex: 1; background: rgba(0,0,0,0.25); border-radius: 14px; border: 2px dashed rgba(255,215,0,0.4); position: relative; overflow: hidden; margin-bottom: 10px; touch-action: manipulation; transition: height 0.3s ease;">
+        <div id="gameStartOverlay" style="position: absolute; top:0; left:0; width:100%; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; background: rgba(0,0,0,0.5); border-radius:12px; padding:20px; z-index: 20;">
+          <p style="font-size: 15px; margin-bottom: 14px; line-height: 1.5; text-shadow: 0 1px 3px rgba(0,0,0,0.6);">स्क्रीन पर आने वाली वस्तुओं पर जल्दी-जल्दी टैप करके स्कोर बनाएं!</p>
           <button onclick="runFestivalGameEngine('${key}')" style="background: linear-gradient(135deg, #00c853, #64dd17); color: white; border: none; padding: 12px 28px; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,200,83,0.4);">
             ▶️ गेम शुरू करें (Start Game)
           </button>
@@ -1059,25 +1168,38 @@ function runFestivalGameEngine(key) {
   timerEl.textContent = '25s';
   if (shareBtn) shareBtn.style.display = 'none';
 
+  if (!document.getElementById('gameAnimStyle')) {
+    const st = document.createElement('style');
+    st.id = 'gameAnimStyle';
+    st.textContent = `
+      @keyframes floatUpGame {
+        0% { bottom: -40px; opacity: 1; transform: rotate(0deg); }
+        100% { bottom: calc(100% - 40px); opacity: 0.9; transform: rotate(25deg); }
+      }
+    `;
+    document.head.appendChild(st);
+  }
+
   gameSpawnInterval = setInterval(() => {
     if (timeLeft <= 0) return;
     const item = document.createElement('span');
     const symbol = preset.items[Math.floor(Math.random() * preset.items.length)];
     item.textContent = symbol;
     
-    const size = Math.floor(Math.random() * 16) + 32;
-    const left = Math.floor(Math.random() * 80) + 5;
-    const duration = Math.random() * 1.5 + 1.2;
+    const size = Math.floor(Math.random() * 16) + 34;
+    const left = Math.floor(Math.random() * 82) + 4;
+    const duration = Math.random() * 1.5 + 2.2;
 
     item.style.cssText = `
       position: absolute;
       left: ${left}%;
-      bottom: -50px;
+      bottom: -40px;
       font-size: ${size}px;
       cursor: pointer;
       user-select: none;
       filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
       animation: floatUpGame ${duration}s linear forwards;
+      z-index: 10;
     `;
 
     item.onclick = (e) => {
@@ -1140,7 +1262,7 @@ function runFestivalGameEngine(key) {
     st.textContent = `
       @keyframes floatUpGame {
         0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(-310px) rotate(20deg); opacity: 0.8; }
+        100% { transform: translateY(-700px) rotate(20deg); opacity: 0.8; }
       }
     `;
     document.head.appendChild(st);
@@ -1185,6 +1307,9 @@ function shareGameHighScore(key) {
 /**
  * Renders Left Side Panel Widgets for Desktop Screens
  */
+/**
+ * Renders Left Side Panel Widgets for Desktop Screens
+ */
 function renderLeftSidePanelWidgets(cfg) {
   const leftPanel = document.getElementById('leftSidePanel');
   if (!leftPanel) return;
@@ -1197,17 +1322,19 @@ function renderLeftSidePanelWidgets(cfg) {
       <p style="font-size: 13px; color: #555; margin-bottom: 12px; line-height: 1.4;">
         अपना नाम डालकर दोस्तों को तुरंत ${cfg.name} का विश लिंक भेजें!
       </p>
-      <input type="text" id="sideNameInput" placeholder="अपना नाम दर्ज करें" value="${localStorage.getItem('user_sender_name') || ''}" oninput="localStorage.setItem('user_sender_name', this.value.trim())" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #ccc; margin-bottom:12px; font-size:14px; outline:none;">
+      <input type="text" id="sideNameInput" placeholder="अपना नाम दर्ज करें" value="${localStorage.getItem('user_sender_name') || ''}" oninput="localStorage.setItem('user_sender_name', this.value.trim()); syncAllNameInputs(this.value.trim());" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #ccc; margin-bottom:12px; font-size:14px; outline:none;">
       
+      <!-- ULTRA HIGHLIGHTED GAME BUTTON -->
+      <button onclick="openFestivalGameModal('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #ff1744, #ff5252, #ff9100, #ffea00); background-size: 200% 200%; color:white; border: 2px solid #ffffff; padding:13px 10px; border-radius:12px; font-weight:800; cursor:pointer; font-size:14px; box-shadow: 0 0 16px rgba(255,23,68,0.7), 0 0 25px rgba(255,145,0,0.5); text-shadow: 0 1px 3px rgba(0,0,0,0.5); margin-bottom: 10px; animation: gameHighlightPulse 1.6s infinite alternate; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 6px;">
+        <span style="position: absolute; top: 0; right: 0; background: #ffff00; color: #b71c1c; font-size: 9px; font-weight: 900; padding: 2px 6px; border-bottom-left-radius: 6px; text-transform: uppercase;">🔥 HOT GAME</span>
+        <span>🎮</span> <span>${cfg.name} स्पेशल गेम खेलें & प्राइज जीतो!</span>
+      </button>
+
       <button onclick="copySideWishLink('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #25D366, #128C7E); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; box-shadow: 0 4px 10px rgba(37,211,102,0.3); margin-bottom: 8px;">
         📱 विश लिंक कॉपी करें
       </button>
 
-      <button onclick="openFestivalGameModal('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #d32f2f, #c2185b); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(211,47,47,0.3); margin-bottom: 8px; animation: pulse 2s infinite alternate;">
-        🎮 ${cfg.name} स्पेशल गेम खेलें
-      </button>
-
-      <button onclick="downloadCustomCanvasCard(null, '${cfg.key}', document.getElementById('sideNameInput') ? document.getElementById('sideNameInput').value.trim() : '')" style="width:100%; background: linear-gradient(135deg, #e91e63, #ad1457); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(233,30,99,0.25); margin-bottom: 8px;">
+      <button onclick="downloadCustomCanvasCard(null, '${cfg.key}', getActiveSenderName())" style="width:100%; background: linear-gradient(135deg, #e91e63, #ad1457); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(233,30,99,0.25); margin-bottom: 8px;">
         🎨 HD विश कार्ड डाउनलोड करें (Canvas)
       </button>
 
@@ -1215,7 +1342,7 @@ function renderLeftSidePanelWidgets(cfg) {
         🎡 लकी आशीर्वाद स्पिनर (Fortune Wheel)
       </button>
 
-      <button onclick="openQRCodeModal(window.location.href.split('?')[0] + '?from=' + encodeURIComponent(document.getElementById('sideNameInput') ? document.getElementById('sideNameInput').value.trim() || 'आप' : 'आप'))" style="width:100%; background: linear-gradient(135deg, #9c27b0, #6a1b9a); color:white; border:none; padding:10px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(156,39,176,0.25); margin-bottom: 8px;">
+      <button onclick="openQRCodeModal(window.location.href.split('?')[0] + '?from=' + encodeURIComponent(getActiveSenderName()))" style="width:100%; background: linear-gradient(135deg, #9c27b0, #6a1b9a); color:white; border:none; padding:10px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(156,39,176,0.25); margin-bottom: 8px;">
         📱 QR कोड से शेयर करें
       </button>
 
@@ -1228,7 +1355,7 @@ function renderLeftSidePanelWidgets(cfg) {
       </button>
     </div>
 
-    <div style="background: rgba(255,255,255,0.94); border-radius: 16px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); text-align: left; border: 1px solid rgba(0,0,0,0.06); backdrop-filter: blur(5px);">
+    <div style="background: rgba(255,255,255,0.94); border-radius: 16px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); text-align: left; border: 1px solid rgba(0,0,0,0.06); backdrop-filter: blur(5px); margin-bottom: 20px;">
       <h3 style="font-size: 16px; color: #222; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
         <span>📜</span> <span>शुभ विचार (Festive Quotes)</span>
       </h3>
@@ -1278,7 +1405,7 @@ function renderScheduleAndInfoWidgets(cfg, currentKey, isInSubfolder = false) {
       <h3 style="color: #111; font-size: 16px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
         <span>📅</span> <span>आगामी त्योहार कैलेंडर</span>
       </h3>
-      <div style="max-height: 240px; overflow-y: auto; padding-right: 4px;">
+      <div style="max-height: 260px; overflow-y: auto; padding-right: 4px;">
         ${scheduleHTML}
       </div>
     </div>
@@ -1301,8 +1428,10 @@ function renderScheduleAndInfoWidgets(cfg, currentKey, isInSubfolder = false) {
         </ul>
       </div>
 
-      <button onclick="openFestivalGameModal('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #d32f2f, #c2185b); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(211,47,47,0.3); margin-bottom: 8px;">
-        🎮 ${cfg.name} स्पेशल मिनी-गेम खेलें
+      <!-- ULTRA HIGHLIGHTED GAME BUTTON -->
+      <button onclick="openFestivalGameModal('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #ff1744, #ff5252, #ff9100); color:white; border: 2px solid #ffffff; padding:12px; border-radius:10px; font-weight:800; cursor:pointer; font-size:14px; box-shadow: 0 0 16px rgba(255,23,68,0.7); animation: gameHighlightPulse 1.6s infinite alternate; margin-bottom: 8px; position: relative; display: flex; align-items: center; justify-content: center; gap: 6px;">
+        <span style="position: absolute; top: 0; right: 0; background: #ffff00; color: #b71c1c; font-size: 8px; font-weight: 900; padding: 2px 5px; border-bottom-left-radius: 5px;">🔥 HOT</span>
+        <span>🎮</span> <span>${cfg.name} स्पेशल मिनी-गेम खेलें</span>
       </button>
 
       <button onclick="downloadFestivalCalendarEvent('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #0288d1, #0097a7); color:white; border:none; padding:10px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(2,136,209,0.3);">
@@ -1321,12 +1450,14 @@ function renderScheduleAndInfoWidgets(cfg, currentKey, isInSubfolder = false) {
       </p>
       <input type="text" id="mobileNameInput" placeholder="अपना नाम दर्ज करें" value="${localStorage.getItem('user_sender_name') || ''}" oninput="localStorage.setItem('user_sender_name', this.value.trim()); syncAllNameInputs(this.value.trim());" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #ccc; margin-bottom:12px; font-size:14px; outline:none;">
       
-      <button onclick="copySideWishLink('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #25D366, #128C7E); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; box-shadow: 0 4px 10px rgba(37,211,102,0.3); margin-bottom: 8px;">
-        📱 विश लिंक कॉपी करें
+      <!-- ULTRA HIGHLIGHTED GAME BUTTON -->
+      <button onclick="openFestivalGameModal('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #ff1744, #ff5252, #ff9100); color:white; border: 2px solid #ffffff; padding:12px; border-radius:10px; font-weight:800; cursor:pointer; font-size:14px; box-shadow: 0 0 16px rgba(255,23,68,0.7); animation: gameHighlightPulse 1.6s infinite alternate; margin-bottom: 10px; position: relative; display: flex; align-items: center; justify-content: center; gap: 6px;">
+        <span style="position: absolute; top: 0; right: 0; background: #ffff00; color: #b71c1c; font-size: 8px; font-weight: 900; padding: 2px 5px; border-bottom-left-radius: 5px;">🔥 HOT</span>
+        <span>🎮</span> <span>${cfg.name} स्पेशल गेम खेलें & प्राइज जीतो!</span>
       </button>
 
-      <button onclick="openFestivalGameModal('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #d32f2f, #c2185b); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(211,47,47,0.3); margin-bottom: 8px; animation: pulse 2s infinite alternate;">
-        🎮 ${cfg.name} स्पेशल गेम खेलें
+      <button onclick="copySideWishLink('${cfg.key}')" style="width:100%; background: linear-gradient(135deg, #25D366, #128C7E); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; box-shadow: 0 4px 10px rgba(37,211,102,0.3); margin-bottom: 8px;">
+        📱 विश लिंक कॉपी करें
       </button>
 
       <button onclick="downloadCustomCanvasCard(null, '${cfg.key}', getActiveSenderName())" style="width:100%; background: linear-gradient(135deg, #e91e63, #ad1457); color:white; border:none; padding:11px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px; box-shadow: 0 4px 10px rgba(233,30,99,0.25); margin-bottom: 8px;">
@@ -1351,10 +1482,10 @@ function renderScheduleAndInfoWidgets(cfg, currentKey, isInSubfolder = false) {
     </div>
   `;
 
-  // Render into right panel for desktop
+  // Render info widget AND upcoming festival calendar DOWN at the bottom of the right panel for desktop
   const rightPanel = document.getElementById('rightSidePanel');
   if (rightPanel) {
-    rightPanel.innerHTML = scheduleWidgetContent + infoWidgetContent;
+    rightPanel.innerHTML = infoWidgetContent + scheduleWidgetContent;
   }
 
   // Render into mobile section for mobile viewports
@@ -1988,6 +2119,17 @@ const UNIVERSAL_FESTIVAL_GAME_BADGES = {
     { id: 7, name: 'आतिशबाजी प्रकाश', icon: '🎆', title: 'आनंद एवं उल्लास', giftHint: '7 शेयर पुरे' },
     { id: 8, name: 'गणेश लक्ष्मी आशीर्वाद', icon: '💛', title: 'अखंड लक्ष्मी', giftHint: '8 शेयर पुरे' },
     { id: 9, name: 'रॉयल दीपावली बम्पर', icon: '👑', title: 'महा दिवाली प्राइज हैम्पर', giftHint: '👑 9 शेयर संपूर्ण!' }
+  ],
+  chhath: [
+    { id: 1, name: 'छठी मैया कृपा', icon: '🌅', title: 'पावन आशीर्वाद', giftHint: '1 शेयर पुरा' },
+    { id: 2, name: 'ठेकुआ प्रसाद', icon: '🌾', title: 'महाप्रसाद मिठास', giftHint: '2 शेयर पुरे' },
+    { id: 3, name: 'सिल्वर छठ पास', icon: '🥉', title: 'लोकपर्व उत्सव', giftHint: '🥉 3 शेयर अनलॉक्ड!' },
+    { id: 4, name: 'संध्या अर्घ्य', icon: '☀️', title: 'अस्ताचलगामी सूर्य', giftHint: '4 शेयर पुरे' },
+    { id: 5, name: 'उषा अर्घ्य सूप', icon: '🎋', title: 'उदीयमान सूर्य', giftHint: '5 शेयर पुरे' },
+    { id: 6, name: 'गोल्ड सूर्य कूपन', icon: '🥈', title: 'आरोग्य एवं तेज पास', giftHint: '🥈 6 शेयर अनलॉक्ड!' },
+    { id: 7, name: 'गंगा जल शुद्धि', icon: '🌊', title: 'पवित्र स्नान', giftHint: '7 शेयर पुरे' },
+    { id: 8, name: 'अखंड व्रत फल', icon: '✨', title: 'संतान सुख व समृद्धि', giftHint: '8 शेयर पुरे' },
+    { id: 9, name: 'रॉयल छठ बम्पर', icon: '👑', title: 'महा छठ महापर्व प्राइज', giftHint: '👑 9 शेयर संपूर्ण!' }
   ]
 };
 
@@ -2349,11 +2491,11 @@ function renderUniversalFestivalShareGameUI(festKey, containerId) {
 
       <!-- Action Buttons Grid -->
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px;">
-        <button onclick="openPopup();" style="background: linear-gradient(135deg, #e65100, #ff9800); color: white; border: none; padding: 12px 10px; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 13px; box-shadow: 0 4px 12px rgba(230,81,0,0.3); display: flex; align-items: center; justify-content: center; gap: 6px;">
+        <button onclick="openPopup();" style="background: linear-gradient(135deg, #ff1744, #ff5252, #ff9100); color: white; border: 2px solid #ffffff; padding: 12px 10px; border-radius: 12px; font-weight: 800; cursor: pointer; font-size: 13px; box-shadow: 0 0 14px rgba(255,23,68,0.6); display: flex; align-items: center; justify-content: center; gap: 6px; animation: gameHighlightPulse 1.6s infinite alternate; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">
           <span>📱</span> <span>विश शेयर करें (+1)</span>
         </button>
 
-        <button onclick="openUniversalFestivalGiftModal('${key}');" style="background: linear-gradient(135deg, #d32f2f, #b71c1c); color: white; border: none; padding: 12px 10px; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 13px; box-shadow: 0 4px 12px rgba(211,47,47,0.3); display: flex; align-items: center; justify-content: center; gap: 6px; animation: pulse 2s infinite alternate;">
+        <button onclick="openUniversalFestivalGiftModal('${key}');" style="background: linear-gradient(135deg, #d32f2f, #b71c1c, #ff1744); color: white; border: 2px solid #ffd700; padding: 12px 10px; border-radius: 12px; font-weight: 800; cursor: pointer; font-size: 13px; box-shadow: 0 0 16px rgba(255,215,0,0.7); display: flex; align-items: center; justify-content: center; gap: 6px; animation: gameHighlightPulse 1.6s infinite alternate; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">
           <span>🎁</span> <span>${cfg.name} गिफ्ट बॉक्स</span>
         </button>
       </div>
@@ -2400,6 +2542,7 @@ window.spawnFloatingDiyas = spawnFloatingDiyas;
 window.downloadCustomCanvasCard = downloadCustomCanvasCard;
 window.openQRCodeModal = openQRCodeModal;
 window.openFestivalGameModal = openFestivalGameModal;
+window.toggleFestivalGameFullscreen = toggleFestivalGameFullscreen;
 window.stopFestivalGame = stopFestivalGame;
 window.runFestivalGameEngine = runFestivalGameEngine;
 window.shareGameHighScore = shareGameHighScore;

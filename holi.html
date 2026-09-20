@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="hi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +19,7 @@
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       background: linear-gradient(135deg, #ffedff, #e3f2fd, #fff3e0);
@@ -33,11 +35,12 @@
       justify-content: center;
       gap: 15px;
       flex-wrap: wrap;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
       position: sticky;
       top: 0;
       z-index: 100;
     }
+
     nav a {
       color: white;
       text-decoration: none;
@@ -47,7 +50,9 @@
       border-radius: 20px;
       transition: all 0.3s ease;
     }
-    nav a:hover, nav a.active {
+
+    nav a:hover,
+    nav a.active {
       background: rgba(255, 255, 255, 0.3);
     }
 
@@ -81,17 +86,20 @@
       margin: 15px 0 20px;
       box-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
     }
+
     .countdown-title {
       font-size: 13px;
       letter-spacing: 0.5px;
       margin-bottom: 10px;
       font-weight: bold;
     }
+
     .countdown-wrapper {
       display: flex;
       justify-content: center;
       gap: 10px;
     }
+
     .countdown-box {
       background: rgba(255, 255, 255, 0.2);
       border-radius: 8px;
@@ -99,11 +107,13 @@
       min-width: 55px;
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
+
     .digit {
       font-size: 20px;
       font-weight: 800;
       color: #fff;
     }
+
     .digit-label {
       font-size: 9px;
       text-transform: uppercase;
@@ -116,6 +126,7 @@
       overflow: hidden;
       margin-bottom: 15px;
     }
+
     .main-img-container img {
       width: 100%;
       height: auto;
@@ -131,6 +142,7 @@
       padding: 10px 5px;
       margin-bottom: 15px;
     }
+
     .image-option {
       width: 65px;
       height: 65px;
@@ -140,7 +152,9 @@
       object-fit: cover;
       transition: all 0.25s ease;
     }
-    .image-option.selected, .image-option:hover {
+
+    .image-option.selected,
+    .image-option:hover {
       border-color: #e91e63;
       transform: scale(1.08);
     }
@@ -179,6 +193,7 @@
       box-shadow: 0 4px 12px rgba(233, 30, 99, 0.35);
       transition: all 0.3s ease;
     }
+
     .btn-share:hover {
       transform: translateY(-2px);
     }
@@ -197,6 +212,7 @@
       z-index: 1000;
       padding: 20px;
     }
+
     .popup-content {
       background: white;
       padding: 22px;
@@ -205,6 +221,7 @@
       width: 100%;
       max-width: 360px;
     }
+
     .wish-card {
       background: #fce4ec;
       border-radius: 12px;
@@ -212,11 +229,13 @@
       margin: 15px 0;
       border: 1px solid #f8bbd0;
     }
+
     .wish-card img {
       width: 100%;
       border-radius: 8px;
       margin-bottom: 10px;
     }
+
     .wish-text {
       font-size: 14px;
       color: #333;
@@ -224,12 +243,14 @@
       text-align: left;
       line-height: 1.4;
     }
+
     .modal-links {
       display: flex;
       flex-direction: column;
       gap: 8px;
       margin-top: 15px;
     }
+
     .modal-links a {
       text-decoration: none;
       padding: 10px;
@@ -237,10 +258,27 @@
       font-weight: 600;
       font-size: 14px;
     }
-    .link-wa { background: #25D366; color: white; }
-    .link-fb { background: #1877F2; color: white; }
-    .link-tg { background: #0088cc; color: white; }
-    .link-dl { background: #e91e63; color: white; }
+
+    .link-wa {
+      background: #25D366;
+      color: white;
+    }
+
+    .link-fb {
+      background: #1877F2;
+      color: white;
+    }
+
+    .link-tg {
+      background: #0088cc;
+      color: white;
+    }
+
+    .link-dl {
+      background: #e91e63;
+      color: white;
+    }
+
     .btn-close {
       margin-top: 10px;
       background: #757575;
@@ -253,6 +291,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <nav>
@@ -267,58 +306,72 @@
     <a href="navratri.html">नवरात्रि</a>
     <a href="dussehra.html">दशहरा</a>
     <a href="diwali.html">दिवाली</a>
+    <a href="chhath.html">छठ पूजा</a>
   </nav>
 
   <h1 class="glow" id="festivalHeading">🎨 होली 2026 की हार्दिक शुभकामनाएं 🎨</h1>
 
   <!-- Multi-Column Layout Wrapper -->
-  <div class="page-layout-wrapper">
 
-    <!-- Left Side Panel (Desktop Only) -->
-    <aside class="left-panel" id="leftSidePanel"></aside>
+  <!-- Left Side Panel (Desktop Only) -->
+  <aside class="left-panel" id="leftSidePanel"></aside>
 
-    <!-- Main Center Content Column -->
-    <main class="main-center-content">
-      <div class="container">
-        
-        <div class="countdown-section">
-          <div id="countdownStatus" class="countdown-title">होली आने में बचा समय:</div>
-          <div class="countdown-wrapper">
-            <div class="countdown-box"><div id="days" class="digit">00</div><div class="digit-label">दिन</div></div>
-            <div class="countdown-box"><div id="hours" class="digit">00</div><div class="digit-label">घंटे</div></div>
-            <div class="countdown-box"><div id="minutes" class="digit">00</div><div class="digit-label">मिनट</div></div>
-            <div class="countdown-box"><div id="seconds" class="digit">00</div><div class="digit-label">सेकंड</div></div>
+  <!-- Main Center Content Column -->
+  <main class="main-center-content">
+    <div class="container">
+
+      <div class="countdown-section">
+        <div id="countdownStatus" class="countdown-title">होली आने में बचा समय:</div>
+        <div class="countdown-wrapper">
+          <div class="countdown-box">
+            <div id="days" class="digit">00</div>
+            <div class="digit-label">दिन</div>
+          </div>
+          <div class="countdown-box">
+            <div id="hours" class="digit">00</div>
+            <div class="digit-label">घंटे</div>
+          </div>
+          <div class="countdown-box">
+            <div id="minutes" class="digit">00</div>
+            <div class="digit-label">मिनट</div>
+          </div>
+          <div class="countdown-box">
+            <div id="seconds" class="digit">00</div>
+            <div class="digit-label">सेकंड</div>
           </div>
         </div>
-
-        <div class="main-img-container">
-          <img src="holi1.jpg" alt="होली 2026" id="holiImage">
-        </div>
-        
-        <div class="image-options">
-          <img src="holi1.jpg" class="image-option selected" onclick="changeImage(this, 'holi1.jpg')">
-        </div>
-
-        <div class="share-message">
-          रंगों के इस पावन पर्व पर अपनों को प्यार और रंगों से भरी बधाई भेजें! 🎨🌈
-        </div>
-
-        <input type="text" id="senderName" placeholder="अपना नाम दर्ज करें (उदा. विकास)">
-        <button class="btn-share" onclick="openPopup()">📱 WhatsApp पर शेयर करें</button>
-
-        <!-- Festival Share Activity Game Container -->
-        <div id="festivalShareGameContainer"></div>
       </div>
 
-      <!-- Mobile Fallback Sections -->
-      <div class="mobile-only-section">
-        <div id="festivalInfoBoxMobile" style="margin-bottom: 15px;"></div>
-        <div id="upcomingScheduleBoxMobile" style="margin-bottom: 25px;"></div>
+      <div class="main-img-container">
+        <img src="holi1.jpg" alt="होली 2026" id="holiImage">
       </div>
-    </main>
 
-    <!-- Right Side Panel (Desktop Only) -->
-    <aside class="right-panel" id="rightSidePanel"></aside>
+      <div class="image-options">
+        <img src="holi1.jpg" class="image-option selected" onclick="changeImage(this, 'holi1.jpg')">
+        <img src="holi2.jpg" class="image-option" onclick="changeImage(this, 'holi2.jpg')">
+        <img src="holi3.jpg" class="image-option" onclick="changeImage(this, 'holi3.jpg')">
+      </div>
+
+      <div class="share-message">
+        रंगों के इस पावन पर्व पर अपनों को प्यार और रंगों से भरी बधाई भेजें! 🎨🌈
+      </div>
+
+      <input type="text" id="senderName" placeholder="अपना नाम दर्ज करें (उदा. विकास)">
+      <button class="btn-share" onclick="openPopup()">📱 WhatsApp पर शेयर करें</button>
+
+      <!-- Festival Share Activity Game Container -->
+      <div id="festivalShareGameContainer"></div>
+    </div>
+
+    <!-- Mobile Fallback Sections -->
+    <div class="mobile-only-section">
+      <div id="festivalInfoBoxMobile" style="margin-bottom: 15px;"></div>
+      <div id="upcomingScheduleBoxMobile" style="margin-bottom: 25px;"></div>
+    </div>
+  </main>
+
+  <!-- Right Side Panel (Desktop Only) -->
+  <aside class="right-panel" id="rightSidePanel"></aside>
 
   </div>
 
@@ -344,7 +397,7 @@
     let targetYear = 2026;
     let festivalWishes = [];
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const info = initFestivalPage('holi', false);
       targetYear = info.year;
       festivalWishes = info.cfg.wishes;
@@ -396,4 +449,5 @@
     }
   </script>
 </body>
+
 </html>
